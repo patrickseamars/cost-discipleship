@@ -8,34 +8,34 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* COST Discipleship App Brand Colors */
-    --background: 208 35% 84%; /* #a6b7cb */
-    --foreground: 240 14% 1%; /* #030304 */
+    /* COST Discipleship App Brand Colors - Sophisticated Blue-Gray Palette */
+    --background: 210 25% 88%; /* Softer layered background */
+    --foreground: 210 30% 8%; /* Deep, sophisticated text */
 
     --card: 0 0% 100%;
-    --card-foreground: 240 14% 1%;
+    --card-foreground: 210 30% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 14% 1%;
+    --popover-foreground: 210 30% 8%;
 
-    --primary: 208 25% 29%; /* #425971 */
+    --primary: 210 30% 15%; /* Deep, professional blue-gray */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 208 22% 60%; /* #899db3 */
-    --secondary-foreground: 240 14% 1%;
+    --secondary: 210 20% 50%; /* Muted blue-gray for accents */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 208 35% 84%;
-    --muted-foreground: 208 15% 45%;
+    --muted: 210 25% 92%; /* Very soft background tones */
+    --muted-foreground: 210 15% 40%;
 
-    --accent: 208 22% 60%; /* #899db3 */
+    --accent: 210 20% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 208 30% 58%; /* #607992 */
+    --border: 210 20% 80%; /* Softer, more subtle borders */
     --input: 0 0% 100%;
-    --ring: 208 25% 29%;
+    --ring: 210 30% 15%;
 
     --radius: 0.75rem;
 
