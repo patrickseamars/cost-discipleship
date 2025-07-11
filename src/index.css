@@ -22,8 +22,8 @@ All colors MUST be HSL.
 .cost-logo-container .corner {
 	content: "";
 	position: absolute;
-	width: 10px; /* Width of the corner border */
-	height: 10px; /* Height of the corner border */
+	width: 18px; /* Width of the corner border */
+	height: 18px; /* Height of the corner border */
 	background-color: transparent; /* Transparent background */
 }
 
@@ -31,40 +31,39 @@ All colors MUST be HSL.
 .cost-logo-container:before {
 	top: 0;
 	left: 0;
-	border-top: 2px solid black;
-	border-left: 2px solid black;
+	border-top: 4px solid black;
+	border-left: 4px solid black;
 }
 
 /* Bottom-right corner */
 .cost-logo-container:after {
 	bottom: 0;
 	right: 0;
-	border-bottom: 2px solid black;
-	border-right: 2px solid black;
+	border-bottom: 4px solid black;
+	border-right: 4px solid black;
 }
 
 /* Top-right corner */
 .cost-logo-container .corner.top-right {
 	top: 0;
 	right: 0;
-	border-top: 2px solid black;
-	border-right: 2px solid black;
+	border-top: 4px solid black;
+	border-right: 4px solid black;
 }
 
 /* Bottom-left corner */
 .cost-logo-container .corner.bottom-left {
 	bottom: 0;
 	left: 0;
-	border-bottom: 2px solid black;
-	border-left: 2px solid black;
+	border-bottom: 4px solid black;
+	border-left: 4px solid black;
 }
 
 .text-content {
-	font-size: 20px;
+	font-size: 30px;
 	font-weight: bold;
 	color: #000;
 	margin: 0;
-	letter-spacing: 0.1em;
 	text-align: center;
 	line-height: 0.8;
 }
