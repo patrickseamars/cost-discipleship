@@ -1,8 +1,12 @@
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Book, HelpCircle, Quote, CheckSquare, Star } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Book, HelpCircle, Quote, CheckSquare, Star, Save } from "lucide-react";
 import { InteractiveAssessment } from "./InteractiveAssessment";
+import { CompletedAssessment } from "./CompletedAssessment";
 import { assessmentStorage } from "@/lib/assessmentStorage";
 import { useToast } from "@/hooks/use-toast";
 
@@ -26,34 +30,157 @@ interface DailyExerciseProps {
 
 export const DailyExercise = ({ exercise, sectionTitle, sectionKey }: DailyExerciseProps) => {
   const { toast } = useToast();
+  
+  // State for reflection answers and question answers
+  const [reflectionAnswers, setReflectionAnswers] = useState<{ [key: number]: string }>({});
+  const [questionAnswers, setQuestionAnswers] = useState<{ [key: number]: string }>({});
+  
+  // Load saved reflections and questions on component mount
+  useEffect(() => {
+    // Clear all state first when switching exercises/days
+    setReflectionAnswers({});
+    setQuestionAnswers({});
+    
+    if (sectionKey) {
+      // Load reflection prompts (for assessments)
+      if (exercise.reflection_prompts && exercise.reflection_prompts.length > 0) {
+        const storageKey = `reflections_${sectionKey}_day${exercise.day}`;
+        const saved = localStorage.getItem(storageKey);
+        if (saved) {
+          try {
+            const parsedAnswers = JSON.parse(saved);
+            setReflectionAnswers(parsedAnswers);
+          } catch (error) {
+            console.error('Error loading saved reflections:', error);
+          }
+        }
+      }
+      
+      // Load regular questions
+      if (exercise.questions && exercise.questions.length > 0) {
+        const storageKey = `questions_${sectionKey}_day${exercise.day}`;
+        const saved = localStorage.getItem(storageKey);
+        if (saved) {
+          try {
+            const parsedAnswers = JSON.parse(saved);
+            setQuestionAnswers(parsedAnswers);
+          } catch (error) {
+            console.error('Error loading saved questions:', error);
+          }
+        }
+      }
+    }
+  }, [sectionKey, exercise.day, exercise.reflection_prompts, exercise.questions]);
+  
+  // Handle reflection input changes
+  const handleReflectionChange = (index: number, value: string) => {
+    setReflectionAnswers(prev => ({
+      ...prev,
+      [index]: value
+    }));
+  };
+  
+  // Handle question input changes
+  const handleQuestionChange = (index: number, value: string) => {
+    setQuestionAnswers(prev => ({
+      ...prev,
+      [index]: value
+    }));
+  };
+  
+  // Save reflection answers
+  const saveReflections = () => {
+    if (Object.keys(reflectionAnswers).length > 0) {
+      const storageKey = `reflections_${sectionKey}_day${exercise.day}`;
+      localStorage.setItem(storageKey, JSON.stringify(reflectionAnswers));
+      
+      toast({
+        title: "Reflections Saved! ✍️",
+        description: "Your reflection responses have been saved.",
+      });
+    }
+  };
+  
+  // Save question answers
+  const saveQuestions = () => {
+    if (Object.keys(questionAnswers).length > 0) {
+      const storageKey = `questions_${sectionKey}_day${exercise.day}`;
+      localStorage.setItem(storageKey, JSON.stringify(questionAnswers));
+      
+      toast({
+        title: "Answers Saved! ✍️",
+        description: "Your question responses have been saved.",
+      });
+    }
+  };
 
   // Handle assessment type with dedicated component
   if (exercise.type === 'assessment' && exercise.evaluation_items && exercise.reflection_prompts) {
-    return (
-      <InteractiveAssessment
-        title={exercise.title}
-        sectionTitle={sectionTitle}
-        evaluationItems={exercise.evaluation_items}
-        reflectionPrompts={exercise.reflection_prompts}
-        onComplete={(results) => {
-          if (sectionKey) {
-            // Save as initial assessment
-            assessmentStorage.saveAssessment(
-              sectionKey,
-              sectionTitle,
-              'initial',
-              results,
-              exercise.evaluation_items!
-            );
+    // Check if initial assessment has already been completed
+    const existingAssessment = sectionKey ? assessmentStorage.getAssessment(sectionKey, 'initial') : null;
+    
+    if (existingAssessment) {
+      // Show completed assessment with option to retake
+      return (
+        <CompletedAssessment
+          assessment={existingAssessment}
+          title={exercise.title}
+          sectionTitle={sectionTitle}
+          evaluationItems={exercise.evaluation_items}
+          reflectionPrompts={exercise.reflection_prompts}
+          onComplete={(results) => {
+            if (sectionKey) {
+              // Save as initial assessment (this is a retake)
+              assessmentStorage.saveAssessment(
+                sectionKey,
+                sectionTitle,
+                'initial',
+                results,
+                exercise.evaluation_items!
+              );
 
-            toast({
-              title: "Assessment Saved! 📊",
-              description: "Your initial assessment has been saved. Complete the week to see your progress!",
-            });
-          }
-        }}
-      />
-    );
+              toast({
+                title: "Assessment Updated! 📊",
+                description: "Your assessment has been updated. You can view your results above.",
+              });
+              
+              // Force a re-render by updating the page
+              window.location.reload();
+            }
+          }}
+        />
+      );
+    } else {
+      // Show interactive assessment for first time
+      return (
+        <InteractiveAssessment
+          title={exercise.title}
+          sectionTitle={sectionTitle}
+          evaluationItems={exercise.evaluation_items}
+          reflectionPrompts={exercise.reflection_prompts}
+          onComplete={(results) => {
+            if (sectionKey) {
+              // Save as initial assessment
+              assessmentStorage.saveAssessment(
+                sectionKey,
+                sectionTitle,
+                'initial',
+                results,
+                exercise.evaluation_items!
+              );
+
+              toast({
+                title: "Assessment Saved! 📊",
+                description: "Your initial assessment has been saved. Complete the week to see your progress!",
+              });
+              
+              // Force a re-render to show completed state
+              window.location.reload();
+            }
+          }}
+        />
+      );
+    }
   }
 
   const getTypeIcon = (type: string) => {
@@ -149,17 +276,47 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey }: DailyExerc
             <>
               <Separator />
               <div>
-                <h3 className="font-semibold text-sm mb-3 text-primary flex items-center gap-2">
-                  <HelpCircle className="w-4 h-4" />
-                  Reflection Questions:
-                </h3>
-                <div className="space-y-2">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="font-semibold text-sm text-primary flex items-center gap-2">
+                    <HelpCircle className="w-4 h-4" />
+                    Reflection Questions:
+                  </h3>
+                  {Object.keys(questionAnswers).length > 0 && (
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={saveQuestions}
+                      className="flex items-center gap-2"
+                    >
+                      <Save className="w-4 h-4" />
+                      Save Answers
+                    </Button>
+                  )}
+                </div>
+                <div className="space-y-4">
                   {exercise.questions.map((question, index) => (
-                    <div key={index} className="bg-muted/50 p-3 rounded-lg">
-                      <p className="text-sm">{question}</p>
+                    <div key={index} className="space-y-2">
+                      <p className="text-sm font-medium text-foreground">{question}</p>
+                      <Textarea
+                        placeholder="Write your answer here..."
+                        value={questionAnswers[index] || ''}
+                        onChange={(e) => handleQuestionChange(index, e.target.value)}
+                        className="min-h-[80px] resize-none"
+                      />
                     </div>
                   ))}
                 </div>
+                {Object.keys(questionAnswers).length > 0 && (
+                  <div className="mt-4 pt-4 border-t">
+                    <Button
+                      onClick={saveQuestions}
+                      className="w-full flex items-center gap-2"
+                    >
+                      <Save className="w-4 h-4" />
+                      Save All Answers
+                    </Button>
+                  </div>
+                )}
               </div>
             </>
           )}
@@ -169,14 +326,44 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey }: DailyExerc
             <>
               <Separator />
               <div>
-                <h3 className="font-semibold text-sm mb-3 text-primary">Reflection:</h3>
-                <div className="space-y-2">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="font-semibold text-sm text-primary">Reflection Questions:</h3>
+                  {Object.keys(reflectionAnswers).length > 0 && (
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={saveReflections}
+                      className="flex items-center gap-2"
+                    >
+                      <Save className="w-4 h-4" />
+                      Save Reflections
+                    </Button>
+                  )}
+                </div>
+                <div className="space-y-4">
                   {exercise.reflection_prompts.map((prompt, index) => (
-                    <div key={index} className="bg-muted/50 p-3 rounded-lg">
-                      <p className="text-sm">{prompt}</p>
+                    <div key={index} className="space-y-2">
+                      <p className="text-sm font-medium text-foreground">{prompt}</p>
+                      <Textarea
+                        placeholder="Write your reflection here..."
+                        value={reflectionAnswers[index] || ''}
+                        onChange={(e) => handleReflectionChange(index, e.target.value)}
+                        className="min-h-[80px] resize-none"
+                      />
                     </div>
                   ))}
                 </div>
+                {Object.keys(reflectionAnswers).length > 0 && (
+                  <div className="mt-4 pt-4 border-t">
+                    <Button
+                      onClick={saveReflections}
+                      className="w-full flex items-center gap-2"
+                    >
+                      <Save className="w-4 h-4" />
+                      Save All Reflections
+                    </Button>
+                  </div>
+                )}
               </div>
             </>
           )}

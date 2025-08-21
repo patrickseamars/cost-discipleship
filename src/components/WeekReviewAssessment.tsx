@@ -70,8 +70,14 @@ export const WeekReviewAssessment = ({
     if (!comparison?.initial || !comparison?.final) return [];
 
     return evaluationItems.map((item, index) => {
-      const initialRating = comparison.initial.results.ratings[index] || 0;
-      const finalRating = comparison.final.results.ratings[index] || 0;
+      // Access ratings data (the debug shows string keys like "0", "1", etc.)
+      const initialRatings = comparison.initial?.results?.ratings || {};
+      const finalRatings = comparison.final?.results?.ratings || {};
+      
+      // Try both numeric and string keys and ensure we get numbers
+      const initialRating = Number(initialRatings[index] ?? initialRatings[index.toString()] ?? 0);
+      const finalRating = Number(finalRatings[index] ?? finalRatings[index.toString()] ?? 0);
+      
       const change = finalRating - initialRating;
       
       let changeType: 'improved' | 'declined' | 'same' = 'same';
@@ -279,6 +285,7 @@ export const WeekReviewAssessment = ({
 
             <Separator />
 
+            
             {/* Detailed Comparison */}
             <div className="space-y-3">
               <h4 className="font-semibold text-sm">Individual Area Progress</h4>
@@ -287,7 +294,7 @@ export const WeekReviewAssessment = ({
                   <div className="flex items-start justify-between">
                     <p className="text-sm flex-1 mr-2">{item.text}</p>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs text-muted-foreground">
+                      <span className="text-xs text-muted-foreground font-mono">
                         {item.initialRating} → {item.finalRating}
                       </span>
                       <div className={`flex items-center gap-1 px-2 py-1 rounded text-xs ${getChangeColor(item.changeType)}`}>
@@ -298,14 +305,26 @@ export const WeekReviewAssessment = ({
                       </div>
                     </div>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-4">
                     <div className="flex-1">
-                      <div className="text-xs text-muted-foreground mb-1">Initial</div>
-                      <Progress value={(item.initialRating / 10) * 100} className="h-1" />
+                      <div className="text-xs font-medium text-muted-foreground mb-2">Initial</div>
+                      <div className="relative h-3 w-full overflow-hidden rounded-full bg-gray-200">
+                        <div
+                          className="h-full bg-gradient-to-r from-orange-400 to-orange-500 transition-all duration-300 ease-out"
+                          style={{ width: `${(item.initialRating / 10) * 100}%` }}
+                        />
+                      </div>
+                      <div className="text-xs text-gray-500 mt-1 font-mono">{item.initialRating}/10</div>
                     </div>
                     <div className="flex-1">
-                      <div className="text-xs text-muted-foreground mb-1">Final</div>
-                      <Progress value={(item.finalRating / 10) * 100} className="h-1" />
+                      <div className="text-xs font-medium text-muted-foreground mb-2">Final</div>
+                      <div className="relative h-3 w-full overflow-hidden rounded-full bg-gray-200">
+                        <div
+                          className="h-full bg-gradient-to-r from-green-500 to-green-600 transition-all duration-300 ease-out shadow-sm"
+                          style={{ width: `${(item.finalRating / 10) * 100}%` }}
+                        />
+                      </div>
+                      <div className="text-xs text-gray-500 mt-1 font-mono">{item.finalRating}/10</div>
                     </div>
                   </div>
                 </div>
