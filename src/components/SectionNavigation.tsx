@@ -2,11 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Users, BookOpen, CheckSquare, ArrowLeft, ArrowRight } from "lucide-react";
+import { Users, BookOpen, CheckSquare, ArrowLeft, ArrowRight, Calendar } from "lucide-react";
 import { useState } from "react";
 import { SectionOverview } from "./SectionOverview";
 import { DailyExercise } from "./DailyExercise";
 import { SectionSummary } from "./SectionSummary";
+import { WeekReviewAssessment } from "./WeekReviewAssessment";
 
 interface SectionNavigationProps {
   sectionKey: string;
@@ -114,16 +115,38 @@ export const SectionNavigation = ({
                           {day}
                         </Button>
                       ))}
+                      
+                      {/* Week Review Button */}
+                      <Button
+                        key="review"
+                        variant={currentDay === totalDays + 1 ? "default" : "outline"}
+                        size="sm"
+                        onClick={() => setCurrentDay(totalDays + 1)}
+                        className="flex items-center gap-1 px-3"
+                      >
+                        <Calendar className="w-3 h-3" />
+                        Review
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
 
-                {/* Current Exercise */}
-                {getCurrentExercise() && (
-                  <DailyExercise 
-                    exercise={getCurrentExercise()} 
+                {/* Current Exercise or Week Review */}
+                {currentDay === totalDays + 1 ? (
+                  <WeekReviewAssessment
+                    sectionKey={sectionKey}
                     sectionTitle={exerciseData.title}
+                    evaluationItems={exercises.find((ex: any) => ex.type === 'assessment')?.evaluation_items || []}
+                    reflectionPrompts={exercises.find((ex: any) => ex.type === 'assessment')?.reflection_prompts || []}
                   />
+                ) : (
+                  getCurrentExercise() && (
+                    <DailyExercise 
+                      exercise={getCurrentExercise()} 
+                      sectionTitle={exerciseData.title}
+                      sectionKey={sectionKey}
+                    />
+                  )
                 )}
               </>
             )}

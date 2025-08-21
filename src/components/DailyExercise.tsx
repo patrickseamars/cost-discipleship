@@ -2,6 +2,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Book, HelpCircle, Quote, CheckSquare, Star } from "lucide-react";
+import { InteractiveAssessment } from "./InteractiveAssessment";
+import { assessmentStorage } from "@/lib/assessmentStorage";
+import { useToast } from "@/hooks/use-toast";
 
 interface DailyExerciseProps {
   exercise: {
@@ -18,9 +21,41 @@ interface DailyExerciseProps {
     exercises?: any[];
   };
   sectionTitle: string;
+  sectionKey?: string;
 }
 
-export const DailyExercise = ({ exercise, sectionTitle }: DailyExerciseProps) => {
+export const DailyExercise = ({ exercise, sectionTitle, sectionKey }: DailyExerciseProps) => {
+  const { toast } = useToast();
+
+  // Handle assessment type with dedicated component
+  if (exercise.type === 'assessment' && exercise.evaluation_items && exercise.reflection_prompts) {
+    return (
+      <InteractiveAssessment
+        title={exercise.title}
+        sectionTitle={sectionTitle}
+        evaluationItems={exercise.evaluation_items}
+        reflectionPrompts={exercise.reflection_prompts}
+        onComplete={(results) => {
+          if (sectionKey) {
+            // Save as initial assessment
+            assessmentStorage.saveAssessment(
+              sectionKey,
+              sectionTitle,
+              'initial',
+              results,
+              exercise.evaluation_items!
+            );
+
+            toast({
+              title: "Assessment Saved! 📊",
+              description: "Your initial assessment has been saved. Complete the week to see your progress!",
+            });
+          }
+        }}
+      />
+    );
+  }
+
   const getTypeIcon = (type: string) => {
     switch (type) {
       case 'assessment':
