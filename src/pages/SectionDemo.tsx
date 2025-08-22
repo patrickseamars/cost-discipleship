@@ -27,18 +27,21 @@ const SectionDemo = () => {
   const loadSectionData = async (sectionKey: string) => {
     setLoading(true);
     try {
+      // Get the base path for API calls
+      const basePath = import.meta.env.PROD ? '/cost-discipleship' : '';
+      
       // Load overview data
-      const overviewResponse = await fetch('/src/data/section-overviews.json');
+      const overviewResponse = await fetch(`${basePath}/src/data/section-overviews.json`);
       const overviewJson = await overviewResponse.json();
       setOverviewData(overviewJson.sections[sectionKey]);
 
       // Load exercise data  
-      const exerciseResponse = await fetch('/src/data/daily-exercises.json');
+      const exerciseResponse = await fetch(`${basePath}/src/data/daily-exercises.json`);
       const exerciseJson = await exerciseResponse.json();
       setExerciseData(exerciseJson.sections[sectionKey]);
 
       // Load summary data
-      const summaryResponse = await fetch('/src/data/section-summaries.json');
+      const summaryResponse = await fetch(`${basePath}/src/data/section-summaries.json`);
       const summaryJson = await summaryResponse.json();
       setSummaryData(summaryJson.sections[sectionKey]);
 
