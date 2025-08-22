@@ -1,0 +1,426 @@
+{
+  "program_info": {
+    "title": "COST Training Section Summaries",
+    "description": "Weekly wrap-up content for each section including key thoughts, identity statements, and habit tracking"
+  },
+  "sections": {
+    "relationship": {
+      "id": 1,
+      "title": "The Habit of Relationship",
+      "core_habit": "Spend the first hour of your morning alone with God",
+      "summary": {
+        "introduction": "In Section 1 of COST, we focused on the Habit of Relationship: Spend the first hour of your morning alone with God.",
+        "key_thoughts": [
+          "Devote time alone with God each morning. Be intentional about what that time looks like, and how much time you set aside. Consider increasing that time to one hour alone with God, first thing, each morning.",
+          "Place matters. Find an intentional, solitary place where you can focus on quality time with God.",
+          "Be intentional about how you approach your time reading the Bible. Review the SOAP method, and consider incorporating elements of that method into your routine daily routine.",
+          "Be intentional about how you approach prayer. Review the HANDY method and begin practicing holistic prayer regularly."
+        ],
+        "identity_statement": "With the habit of Relationship, I decide to become _______________.",
+        "action_plan": "I will _______ at _______ in _______.",
+        "methods_introduced": [
+          {
+            "name": "SOAP Method",
+            "description": "Scripture, Observation, Application, Prayer - A method for daily Bible reading and application"
+          },
+          {
+            "name": "HANDY Method", 
+            "description": "A holistic approach to prayer covering multiple aspects of spiritual conversation with God"
+          }
+        ],
+        "habit_tracker_items": [
+          "Daily morning time with God (1 hour goal)",
+          "Solitary place for prayer/reading",
+          "Bible reading with application (SOAP method)",
+          "Holistic prayer practice (HANDY method)"
+        ]
+      }
+    },
+    "rhythm": {
+      "id": 2,
+      "title": "The Habit of Rhythm",
+      "core_habit": "Develop weekly rhythms to be healthy emotionally, mentally, and physically",
+      "summary": {
+        "introduction": "In Section 2 of COST we focused on the Habit of Rhythm: Develop weekly rhythms to be healthy emotionally, mentally, and physically.",
+        "key_thoughts": [
+          "The habit of rhythms begins when we realize that God has designed us to worship him holistically, knowing that each area of our life has an impact on the others (see Mark 12:30). When we're healthy emotionally, physically, and mentally, we can take our spiritual health to another level.",
+          "Jesus has changed our hearts. But the battle still rages in our minds, whether we will trust and follow Him or the ways of this world. How are you regularly 'renewing your mind' through God's word, good books, and challenging conversations? Do not be apathetic. Let God change the way you think.",
+          "God has designed us to be emotional people, Jesus displaying critical emotions throughout his life. The key is not whether we have emotions, but how we deal with them. Learn to understand your emotions (Psalm 139) and bring them to God and trusted people regularly.",
+          "God created our bodies 'very good,' and as such we must take care of them, knowing that our bodies are a 'temple' (1 Corinthians 6). We cannot hope to give God our all when we do not have the energy of strength physically to follow Him where He's calling us to go. Take care of your body!",
+          "When we worship God holistically, we will thrive as his people."
+        ],
+        "identity_statement": "With the habit of Rhythm, I decide to become _______________.",
+        "areas_of_focus": [
+          {
+            "area": "Mental Health",
+            "practices": ["Renewing mind through Scripture", "Reading quality books", "Challenging conversations", "Countertalking lies with truth"]
+          },
+          {
+            "area": "Emotional Health", 
+            "practices": ["Honest emotional processing", "Journaling", "Bringing emotions to God", "Sharing with trusted people"]
+          },
+          {
+            "area": "Physical Health",
+            "practices": ["Regular exercise", "Healthy eating habits", "Adequate sleep", "Honoring body as God's temple"]
+          }
+        ],
+        "habit_tracker_items": [
+          "Daily Scripture/book reading for mental renewal",
+          "Weekly emotional check-ins through journaling",
+          "Regular exercise routine",
+          "Healthy sleep schedule",
+          "Nutritious eating habits"
+        ]
+      }
+    },
+    "reconciliation": {
+      "id": 3,
+      "title": "The Habit of Reconciliation", 
+      "core_habit": "Commit to gathering weekly with believers in large and small groups",
+      "summary": {
+        "introduction": "In Section 3 of COST, we focused on the Habit of Reconciliation: Commit to gathering weekly with believers in large and small groups.",
+        "key_thoughts": [
+          "The habit of reconciliation begins with an understanding that transformation happens in community with God's people, the Church. The early church laid out a pattern of meeting in large gatherings and small, to live on mission with a big vision, and to experience life change in more personal relationships.",
+          "Faith in Jesus is not merely a private deal, and when we approach worship and communion with Jesus at the expense of knowing and caring for each other we destroy the faith development of others and ourselves. Jesus prioritizes reconciliation and when we prioritize it as well our faith will thrive.",
+          "God wants to heal us at the deepest level, but it won't happen until we discover the power of God in confession. But confession is not merely between us and God, but experienced at its height with one another. Only when we're honest with each other will we be honest with ourselves and God.",
+          "Christ's forgiveness is received as we forgive others. If we choose not to forgive others, we forfeit the experience of grace in our own life. To be truly free and receive God's radical grace, we must forgive others.",
+          "Finally, the love of God is best experienced as we lay our lives down for each other, in the art of true friendship. God made us to thrive in deep, close friendships as we serve, sacrifice, live on mission, and spur each other on together."
+        ],
+        "identity_statement": "With the habit of Reconciliation, I decide to become _______________.",
+        "community_practices": [
+          {
+            "type": "Large Group Gatherings",
+            "description": "Weekly Sunday worship services for corporate worship and teaching"
+          },
+          {
+            "type": "Small Group Fellowship",
+            "description": "Intimate community for accountability, confession, and mutual encouragement"
+          },
+          {
+            "type": "Confession & Accountability",
+            "description": "Safe spaces to share struggles and victories with trusted believers"
+          },
+          {
+            "type": "Forgiveness Practice",
+            "description": "Regularly giving and receiving forgiveness within the church family"
+          },
+          {
+            "type": "Deep Friendship",
+            "description": "Intentional relationships that spur one another toward love and good deeds"
+          }
+        ],
+        "habit_tracker_items": [
+          "Weekly large group worship attendance",
+          "Regular small group participation",
+          "Monthly confession/accountability check-ins",
+          "Ongoing forgiveness practice",
+          "Investment in 2-3 deep friendships"
+        ]
+      }
+    },
+    "radiance": {
+      "id": 4,
+      "title": "The Habit of Radiance",
+      "core_habit": "Share your faith every week",
+      "summary": {
+        "introduction": "In Section 4 of COST, we focused on the Habit of Radiance: Share your faith every week.",
+        "key_thoughts": [
+          "God has called us to share our faith with others regularly. We open doors for this by praying for people, listening to them, spending time with them, serving them, and sharing our story with them.",
+          "Sharing your faith effectively begins with prayer. Map out your OIKOS map and make a list of at least five people you know who are far from God and commit to pray for them daily. Hold each other accountable.",
+          "The reality of Hell and eternity should lead us to pray urgently for those who are far from God. Use Romans 9:1–3 and Romans 10:1 as a guide.",
+          "No one can argue with your story. Sharing how Jesus' grace has changed you with others may be one of the most powerful things you can do when it comes to living radiantly."
+        ],
+        "identity_statement": "With the habit of Radiance, I decide to become _______________.",
+        "evangelism_strategy": [
+          {
+            "step": "Prayer",
+            "description": "Pray daily for specific people who are far from God",
+            "tools": ["OIKOS map", "Daily prayer list"]
+          },
+          {
+            "step": "Listen",
+            "description": "Ask good questions and truly listen to understand people's hearts",
+            "tools": ["Conversation starters", "Active listening skills"]
+          },
+          {
+            "step": "Serve",
+            "description": "Show Christ's love through practical acts of service and shared meals",
+            "tools": ["Service opportunities", "Hospitality practices"]
+          },
+          {
+            "step": "Share",
+            "description": "Tell your personal story of transformation through Jesus",
+            "tools": ["2-minute testimony", "Scripture knowledge"]
+          }
+        ],
+        "habit_tracker_items": [
+          "Daily prayer for 5+ non-believers (OIKOS map)",
+          "Weekly spiritual conversations",
+          "Monthly evangelistic activities (meals, service)",
+          "Quarterly sharing of personal testimony",
+          "Regular church invitations"
+        ]
+      }
+    },
+    "response": {
+      "id": 5,
+      "title": "The Habit of Response",
+      "core_habit": "Serve someone daily and your church twice a month",
+      "summary": {
+        "introduction": "In Section 5 of COST, we focused on the Habit of Response: Serve someone daily and your church twice a month.",
+        "key_thoughts": [
+          "Serving is not an optional pursuit, but an obedient demonstration of genuine faith.",
+          "Serving is a way to fight our selfish pursuit to become great by this-world-only standards, as we follow Jesus' example to sacrifice for others.",
+          "Serving involves regular and concrete action, not mere words.",
+          "The collective impact of every follower of Jesus serving unifies the body and helps Jesus' kingdom become a reality in this world."
+        ],
+        "identity_statement": "With the habit of Response, I decide to become _______________.",
+        "service_framework": [
+          {
+            "principle": "Stewardship vs Ownership",
+            "description": "Understanding that our gifts, abilities, and resources belong to God and are entrusted to us for His purposes"
+          },
+          {
+            "principle": "Mission over Position",
+            "description": "Following Jesus' example of serving at the lowest level rather than seeking status or recognition"
+          },
+          {
+            "principle": "True Greatness",
+            "description": "Redefining greatness as sacrificial service rather than worldly achievement or accumulation"
+          },
+          {
+            "principle": "Pure Motives",
+            "description": "Being compelled by Christ's love rather than obligation, guilt, or desire for recognition"
+          },
+          {
+            "principle": "Authentic Faith",
+            "description": "Demonstrating genuine faith through concrete actions, not just words or good intentions"
+          }
+        ],
+        "habit_tracker_items": [
+          "Daily acts of service to others",
+          "Twice monthly church service commitments",
+          "Weekly assessment of service motives",
+          "Monthly spiritual gifts utilization",
+          "Quarterly evaluation of service impact"
+        ]
+      }
+    },
+    "resistance": {
+      "id": 6,
+      "title": "The Habit of Resistance",
+      "core_habit": "Connect weekly with an accountability partner to set boundaries, resist temptations and replace them with living by God's design",
+      "summary": {
+        "introduction": "In Section 6 of COST, we focused on the Habit of Resistance: Connect weekly with an accountability partner to set boundaries, resist temptations and replace them with living by God's design.",
+        "key_thoughts": [
+          "You are not a bad person who needs to be better, you were a dead person who needed the kind of resurrection life only Jesus can give.",
+          "Shame is one of the most powerful weapons of the devil, and as long as we're full of shame, we'll be far from God.",
+          "You can't trust yourself. You must submit to God's view of sexuality, and to do that you must embrace real accountability.",
+          "By God's grace, you can break free from the chains of the past, and enter a totally new, and better, future.",
+          "When we trust Jesus, we have resurrection power to become a new person with totally new desires."
+        ],
+        "identity_statement": "With the habit of Resistance, I decide to become _______________.",
+        "resistance_strategy": [
+          {
+            "boundary": "Flawed Soul",
+            "description": "Acknowledging personal brokenness and inability to trust oneself in areas of temptation"
+          },
+          {
+            "boundary": "Real Accountability",
+            "description": "Regular confession and transparency with a mature, same-gender accountability partner"
+          },
+          {
+            "boundary": "Future Picture",
+            "description": "Considering the long-term consequences of giving in to temptation versus the benefits of obedience"
+          },
+          {
+            "boundary": "Resurrection Power",
+            "description": "Accessing Christ's power within to say 'no' to temptation and 'yes' to God's design"
+          }
+        ],
+        "areas_of_focus": [
+          "Sexual purity and God's design for sexuality",
+          "Digital boundaries and phone/media consumption",
+          "Financial discipline and spending habits",
+          "Words and speech patterns (avoiding gossip, slander, condemnation)",
+          "Food and eating habits",
+          "Time management and work boundaries"
+        ],
+        "habit_tracker_items": [
+          "Weekly accountability partner meetings",
+          "Daily confession and prayer for purity",
+          "Regular boundary setting and evaluation",
+          "Monthly progress review in key temptation areas",
+          "Ongoing replacement of temptations with godly alternatives"
+        ]
+      }
+    },
+    "resources": {
+      "id": 7,
+      "title": "The Habit of Resources",
+      "core_habit": "Structure your stewardship around priority, percentage, and progressive giving",
+      "summary": {
+        "introduction": "In Section 7 of COST, we focused on the Habit of Resources: Structure your stewardship around priority, percentage, and progressive giving.",
+        "key_thoughts": [
+          "Spiritual maturity is impossible without a lifestyle of generosity. What does it mean to you to see life as a stewardship?",
+          "When it comes to money, what is your first priority? Is it your mortgage, your groceries, or your student loans? What would it look like for you to make giving to the work of God your first priority?",
+          "Read Malachi 3:10 together. In the Old Testament, the people of God expressed their trust and dependence on God by giving a tithe (the first 10 percent of one's income) back to the work of God. What is your experience with tithing?",
+          "Read 2 Corinthians 9:6–8 out loud. What stands out to you in this passage? What is God trying to teach us about generosity? Consider the promise that God attaches to a generous life (v. 8). How does this promise impact you?",
+          "Progressive giving means that you expand your generosity as God expands your income. What do you think is the next step for you to progress in generosity? What will you do about it?"
+        ],
+        "identity_statement": "With the habit of Resources, I decide to become _______________.",
+        "stewardship_framework": [
+          {
+            "principle": "Priority",
+            "description": "Making giving to God's work the first financial priority, before other expenses",
+            "practice": "Setting aside giving amount first when income is received"
+          },
+          {
+            "principle": "Percentage", 
+            "description": "Giving a specific percentage of income consistently, starting with the biblical tithe (10%)",
+            "practice": "Calculating and giving a fixed percentage rather than random amounts"
+          },
+          {
+            "principle": "Progressive",
+            "description": "Increasing the percentage of giving as income increases over time",
+            "practice": "Regularly evaluating and expanding generosity as God blesses financially"
+          }
+        ],
+        "financial_disciplines": [
+          "Rejection of wealth as ultimate security (finding security in Christ)",
+          "Stewardship mentality vs. ownership mentality", 
+          "Growing trust in God with finances",
+          "Increasing desire for generosity",
+          "Living within means and budgeting",
+          "Consistent percentage-based giving",
+          "Annual increases in overall giving"
+        ],
+        "habit_tracker_items": [
+          "Weekly percentage-based giving",
+          "Monthly budget review and adherence",
+          "Quarterly generosity evaluation and increase",
+          "Annual giving growth assessment",
+          "Daily contentment vs. greed heart check"
+        ]
+      }
+    },
+    "refuel": {
+      "id": 8,
+      "title": "The Habit of Refuel",
+      "core_habit": "Practice living by grace through a weekly Sabbath routine",
+      "summary": {
+        "introduction": "In Section 8 of COST, we focused on the Habit of Refuel: Practice living by grace through a weekly Sabbath routine.",
+        "key_thoughts": [
+          "Busyness does not bring the true rest only God can bring. We train to enter that rest through the habit of Sabbath.",
+          "Sabbath is a 24-hour period of intentionally stopping work and you delighting in God.",
+          "God did not design us to live from a hurried spirit, but from a spirit of peace, and we engage that peace when we slow down (pause) to rest and reflect.",
+          "Our world leads us to an entitled and greedy spirit, never content with what we have. But when we praise, we engage the rest of contentment that MORE cannot give.",
+          "When we delight we break from the rapid hurry and access that joy of God."
+        ],
+        "identity_statement": "With the habit of Refuel, I decide to become _______________.",
+        "sabbath_framework": [
+          {
+            "element": "Rest",
+            "description": "Ceasing from work, productivity, and achievement-oriented activities for 24 hours",
+            "practices": ["No work tasks", "No business activities", "No productivity goals", "Physical and mental rest"]
+          },
+          {
+            "element": "Delight", 
+            "description": "Engaging in activities that bring joy and help you connect with God's goodness",
+            "practices": ["Feasting and good food", "Time in nature", "Creative activities", "Meaningful relationships", "Worship and prayer"]
+          },
+          {
+            "element": "Worship",
+            "description": "Focusing heart and mind on God's character, goodness, and faithfulness",
+            "practices": ["Corporate worship", "Personal prayer", "Scripture meditation", "Gratitude practice"]
+          }
+        ],
+        "restfulness_indicators": [
+          "Margin in schedule and life",
+          "Slowness vs. hurry in daily rhythm",
+          "Quiet spaces vs. constant noise",
+          "Deep relationships vs. isolation",
+          "Time alone for reflection",
+          "Regular delight and enjoyment",
+          "Clarity of purpose and priorities",
+          "Gratitude and contentment",
+          "Trust in God's provision",
+          "Love, joy, and peace as primary emotions",
+          "Working from love rather than for love",
+          "Viewing work as contribution rather than accumulation"
+        ],
+        "habit_tracker_items": [
+          "Weekly 24-hour Sabbath observance",
+          "Daily rhythm evaluation (rest vs. hurry)",
+          "Regular delight activities planning",
+          "Monthly identity check (being vs. doing)",
+          "Seasonal rest and retreat practices"
+        ]
+      }
+    },
+    "replication": {
+      "id": 9,
+      "title": "The Habit of Replication",
+      "core_habit": "Build an intentional circle of discipleship",
+      "summary": {
+        "introduction": "In Section 9 of COST, we focused on the Habit of Replication: Build an intentional circle of discipleship.",
+        "key_thoughts": [
+          "Every Christian is called to make disciples. Your spiritual growth will hit a ceiling until you own this calling from God. God has raised us up with the conviction and calling to influence others towards spiritual growth.",
+          "To lead others, we must be committed to growing in our COST habits, modeling spiritual growth so we can teach out of modeling. Be committed to growing in your priority, process, and progression, so you can help others do the same.",
+          "List 2–4 people in your life who you think you can help grow in their faith. Assess the nature of your relationship with them, and begin initiating a new discipleship relationship with them.",
+          "As you come to the end of COST Training, it is important to use this time to plan your next step in three key ways: Plan 1: How will you continue to keep accountability in your life to grow in the 9 COST habits? Plan 2: Who will you begin to COST train and when? What's your next step? Plan 3: Who could help you COST train new people?",
+          "Finalize your next steps and commit to hold each other accountable to act. Read Acts 20:32 over each person, then pray for one another, commissioning each member of your group to make disciples. Pray for a fresh filling of the Holy Spirit and the power to lead people closer to Jesus."
+        ],
+        "identity_statement": "With the habit of Replication, I decide to become _______________.",
+        "discipleship_relationships": [
+          {
+            "role": "Paul",
+            "description": "Someone further along in their spiritual journey who can mentor and guide you",
+            "purpose": "Learn from their experience, wisdom, and example"
+          },
+          {
+            "role": "Barnabas",
+            "description": "A peer at a similar level who provides mutual encouragement and accountability",
+            "purpose": "Walk alongside each other in spiritual growth and challenges"
+          },
+          {
+            "role": "Timothy",
+            "description": "Someone earlier in their spiritual journey whom you can invest in and disciple",
+            "purpose": "Pour your life into them and help them grow in their faith"
+          }
+        ],
+        "discipleship_principles": [
+          "Character over qualifications - Jesus chose ordinary people",
+          "Intentional selection - purposefully choosing who to invest in deeply",
+          "Generational thinking - passing faith through spiritual generations like Timothy's family",
+          "Leading by example - modeling the habits and character you want to reproduce",
+          "Ministry as pathway to maturity - we grow by pouring into others"
+        ],
+        "next_steps_planning": [
+          {
+            "plan": "Plan 1: Personal Growth",
+            "question": "How will you continue to keep accountability in your life to grow in the 9 COST habits?",
+            "actions": ["Identify accountability partners", "Schedule regular check-ins", "Set growth goals for each habit"]
+          },
+          {
+            "plan": "Plan 2: Disciple Others",
+            "question": "Who will you begin to COST train and when? What's your next step?",
+            "actions": ["List 2-4 potential disciples", "Assess relationship readiness", "Schedule initial conversations", "Set training timeline"]
+          },
+          {
+            "plan": "Plan 3: Team Ministry",
+            "question": "Who could help you COST train new people?",
+            "actions": ["Identify potential co-trainers", "Plan team approach", "Divide responsibilities", "Create support system"]
+          }
+        ],
+        "habit_tracker_items": [
+          "Monthly discipleship relationship evaluation (Paul, Barnabas, Timothy)",
+          "Weekly investment in 2-4 disciples",
+          "Quarterly COST habit modeling and teaching",
+          "Annual multiplication assessment and planning",
+          "Ongoing prayer for fresh Holy Spirit filling and power"
+        ]
+      }
+    }
+  }
+}
