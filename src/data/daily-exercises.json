@@ -1,0 +1,1045 @@
+{
+  "program": {
+    "title": "COST Training",
+    "subtitle": "Building Habits for Life-Change",
+    "duration_weeks": 10,
+    "acronym": {
+      "C": "CONNECT - build relationships with God and others",
+      "O": "OBEY - love through our time, talent, and treasure",
+      "S": "SHARE - spread the good news to the lost in word and action",
+      "T": "TRAIN - multiply Jesus' movement"
+    }
+  },
+  "sections": {
+    "relationship": {
+      "id": 1,
+      "title": "The Habit of Relationship",
+      "week": 2,
+      "core_habit": "Spend the first hour of your morning alone with God",
+      "scripture_reference": "Philippians 3:8",
+      "quote": "...everything else is worthless when compared with the infinite value of knowing Christ Jesus my Lord.",
+      "daily_exercises": [
+        {
+          "day": 1,
+          "title": "Relationship Evaluation",
+          "type": "assessment",
+          "scripture": null,
+          "content": "Take time to assess your time with God. On a scale of 1 to 10, with a 1 being 'never true of me' and 10 being 'always true of me,' rate where you fall in each area.",
+          "evaluation_items": [
+            "I devote an hour every morning to seeking God",
+            "I practically apply the Bible weekly",
+            "I enjoy and look forward to prayer",
+            "I sense the love of God towards me throughout the day",
+            "I am growing in my knowledge of Scripture",
+            "I am growing in my love for God",
+            "I approach my time with God each day with a sense of expectation"
+          ],
+          "reflection_prompts": [
+            "What stood out to you most?",
+            "Where are you currently strongest?",
+            "Where do you need to grow most?",
+            "What are 2-3 action steps you can take this week to grow?"
+          ]
+        },
+        {
+          "day": 2,
+          "title": "Prayer",
+          "type": "scripture_study",
+          "scripture": "Luke 11:1-10",
+          "questions": [
+            "What does this prayer reveal about Jesus' priorities? What does it say about what God wants most for us and for this world?",
+            "What is the most comforting part of this prayer? And what's most challenging to you?",
+            "What would change most about your prayer rhythms and content if you followed Jesus' pattern for prayer?"
+          ]
+        },
+        {
+          "day": 3,
+          "title": "Time & Space",
+          "type": "scripture_study",
+          "scripture": "Mark 1:35 and Matthew 6:5-6",
+          "questions": [
+            "Why do you think it was important for Jesus to go somewhere 'solitary' or 'secret' to be with God?",
+            "What did Jesus have to leave in order to find solitude? What do you need to leave?"
+          ],
+          "action_items": [
+            {
+              "type": "planning",
+              "prompt": "Complete the following: I will get solitude with God at [TIME] in [LOCATION]",
+              "includes_visual": true
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Stillness",
+          "type": "scripture_study",
+          "scripture": "Psalm 46:10",
+          "questions": [
+            "Why do you think stillness is important for knowing God?",
+            "What distractions prevent you from being still with God? How can you eliminate them?",
+            "It's one thing for our body to be still; it's another for our mind. How can you practice keeping your body and mind still before God?"
+          ],
+          "quotes": [
+            {
+              "text": "In solitude I get rid of my scaffolding: no friends to talk with, no telephone calls to make…the task is to persevere in my solitude, to stay in my cell until all my seductive visitors get tired of pounding on my door and leave me alone.",
+              "author": "Henry Nouwen"
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "title": "The Bible",
+          "type": "scripture_study",
+          "scripture": "2 Timothy 3:14-17",
+          "questions": [
+            "Based on this passage, how life-changing is God's Word? And what is God's goal for us as we read it?",
+            "What would change in your life (for the better) if you were to read it regularly?",
+            "Do you have a daily Bible-reading plan or routine? If not, where could you start this week?"
+          ]
+        },
+        {
+          "day": 6,
+          "title": "The Bible (Application)",
+          "type": "scripture_study",
+          "scripture": "James 1:22-25",
+          "questions": [
+            "What is at stake for the person who takes in biblical information without application?",
+            "Do you have an approach to reading and applying the Bible? If not, why not? Would you consider 'S.O.A.P'? Why or why not?",
+            "What value could there be in writing down action steps for your daily Bible reading? What would stop you from doing this?"
+          ],
+          "quotes": [
+            {
+              "text": "We cannot behave 'on the spot' as he did and taught if in the rest of our time we live as everybody else does... We can become like Christ by practicing the types of activities he himself practiced in order to remain constantly at home in the fellowship of his Father",
+              "author": "Dallas Willard"
+            },
+            {
+              "text": "Under pressure, we do not rise to the occasion, we sink to the level of our training",
+              "author": "Navy Seals"
+            }
+          ]
+        }
+      ]
+    },
+    "rhythm": {
+      "id": 2,
+      "title": "The Habit of Rhythm",
+      "week": 3,
+      "core_habit": "Develop weekly rhythms of emotional, mental, and physical health",
+      "scripture_reference": "Mark 12:30",
+      "quote": "Love the Lord your God with all your heart and with all your soul and with all your mind and with all your strength.",
+      "daily_exercises": [
+        {
+          "day": 1,
+          "title": "Rhythm Evaluation",
+          "type": "assessment",
+          "scripture": null,
+          "content": "Take time to assess your time with God. On a scale of 1 to 10, with a 1 being 'never true of me' and 10 being 'always true of me,' rate where you fall in each area.",
+          "evaluation_items": [
+            "I regularly refresh my mind on God's Word and healthy books",
+            "I regularly evaluate what is influencing me and replace lies with truth",
+            "I regularly get honest about my emotional condition through journaling",
+            "I process my emotions in a healthy way with God and others I trust",
+            "I honor God with my body by eating healthy and not overeating",
+            "I get enough sleep at night and feel refreshed when I wake up",
+            "I take care of my body by regularly working out"
+          ],
+          "reflection_prompts": [
+            "What stood out to you most?",
+            "Where are you currently strongest?",
+            "Where do you need to grow most?",
+            "What are 2-3 action steps you can take this week to grow?"
+          ]
+        },
+        {
+          "day": 2,
+          "title": "Battle of the Mind",
+          "type": "scripture_study",
+          "scripture": "Romans 12:1-2",
+          "questions": [
+            "Why is the battle of the mind so important for Paul? What's at stake?",
+            "What daily and weekly rhythms do you have to regularly renew your mind? What quality books are you currently reading to stretch your mind with God's truth?"
+          ],
+          "exercises": [
+            {
+              "title": "Countertalking Framework",
+              "description": "Work through each of these questions as a framework for mental battles you regularly face:",
+              "questions": [
+                "What's the thought, feeling, and/or sensation? (Write out an obsessive thought that keeps coming to mind, a lie that you just can't shake, a toxic feeling like shame or worry, or a sensation in your body like tightness of chest, shallow breathing, or a sense of dread)",
+                "What's the lie beneath the thought, feeling, and/or sensation that reveals your attachment? (See if you can articulate the lie behind the thought, feeling or sensation. If you're feeling scared and your chest is tight, it could be a lie like 'I'm not safe if people criticize me.' If so, what's the attachment under the anxiety? Could it be an attachment to living a suffering-free life where all people speak well of you?)",
+                "What's the truth? (Write out a scripture or word from the Spirit that counters the lie. Then turn your mind to this truth whenever the lie reappears in your mind stream. It will, many times. Don't be discouraged. It happens to all of us, constantly. Resist)"
+              ]
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "title": "Focused on the Good",
+          "type": "scripture_study",
+          "scripture": "Philippians 4:8-9 and Proverbs 15:14",
+          "questions": [
+            "Negativity and fear can be so loud. Why does Paul want us to saturate our thinking with this list? What's at stake?",
+            "Evaluate: Do the sources of information you regularly tune into help build your focus on Paul's list? What will it take to replace negative thoughts with the truth on Paul's list?",
+            "How would your daily life change if you chose to dwell mentally on these?"
+          ],
+          "quotes": [
+            {
+              "text": "We live at the mercy of our ideas.",
+              "author": "Dallas Willard"
+            },
+            {
+              "text": "The person who does not know how to think will be relentlessly shaped and influenced by the dominant culture around him or her. But the transformed person…will be busy thinking, reflecting, and making independent conclusions about the meaning of life and reality.",
+              "author": "Gordon MacDonald"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Emotional Honesty",
+          "type": "scripture_study",
+          "scripture": "Psalm 42",
+          "questions": [
+            "How does David honestly express his emotional state with God?",
+            "Would he have been able to bring his whole self to God ('deep calls to deep', v. 7) if he were not totally honest about his emotions? Why or why not?",
+            "What's one step you can take to be more honest with your emotional state?"
+          ],
+          "quotes": [
+            {
+              "text": "Ignoring our emotions is turning our back on reality; listening to our emotions ushers into reality. And reality is where we meet God. …We forget that change comes through brutal honesty and vulnerability before God.",
+              "author": "Dan Allender and Tremper Longman"
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "title": "Emotionally Powerful",
+          "type": "scripture_study",
+          "scripture": "Matthew 26:36-41",
+          "questions": [
+            "How was Jesus honest with his emotional state?",
+            "What did Jesus do with His emotional condition? Why was alone time with the Father so important for processing His emotions?",
+            "What's at stake if we do not process our emotions in a healthy way?"
+          ]
+        },
+        {
+          "day": 6,
+          "title": "Physically Disciplined",
+          "type": "scripture_study",
+          "scripture": "1 Corinthians 6:19-20 and 1 Timothy 4:7-10",
+          "questions": [
+            "If our body is a temple of the Lord, something he made 'very good' and designed to live in harmony with the rest of our self, then what new physical rhythms can you make to get better sleep, eat right, and workout regularly?",
+            "Clearly, Paul's telling Timothy that spiritual training is of deeper importance, but he does acknowledge the value of physical training. Where are you not acknowledging the value of eating healthy, working out, and getting adequate sleep?",
+            "How does physical health reinforce spiritual, emotional, and mental health?"
+          ],
+          "quotes": [
+            {
+              "text": "The discipline of the body is more than a health-giving measure. It is an introit to other disciplines. I have learned that when I push my body for an extended time–as in a three-to-six mile run–the other pieces of who I am seem to awaken to the fact that I…really am the boss and that my entire being is expected to submit to the convictions and intentions I have set in place for myself",
+              "author": "Gordon MacDonald"
+            }
+          ],
+          "action_items": [
+            {
+              "type": "planning",
+              "title": "Physical Health Plan",
+              "prompts": [
+                "I will go to bed at _____ and wake up at _____",
+                "I will avoid _____ and replace it with _____",
+                "I will _____ at _____ at _____",
+                "Type of workout: _____",
+                "Location: _____",
+                "Time: _____"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "reconciliation": {
+      "id": 3,
+      "title": "The Habit of Reconciliation",
+      "week": 4,
+      "core_habit": "Commit to gathering weekly with believers in large and small groups",
+      "scripture_reference": "Hebrews 10:24-25",
+      "quote": "And let us consider how we may spur one another on toward love and good deeds, not giving up meeting together...",
+      "daily_exercises": [
+        {
+          "day": 1,
+          "title": "Reconciliation Evaluation",
+          "type": "assessment",
+          "content": "On a scale of 1 to 10, rate where you fall in each area.",
+          "evaluation_items": [
+            "I make attending and engaging in Sunday morning gatherings a weekly priority",
+            "I go out of my way to develop personal relationships with those in my church",
+            "I meet weekly with a small group during our church's semester groups",
+            "I actively listen to and pray for the needs of those in my church family",
+            "I share my struggles and victories openly with my church family",
+            "I engage the practice of giving and receiving forgiveness with my church family",
+            "I regularly serve those in need in my church family as I am able"
+          ],
+          "reflection_prompts": [
+            "What stood out to you most?",
+            "Where are you currently strongest?",
+            "Where do you need to grow most?",
+            "What are 2-3 action steps you can take this week to grow?"
+          ]
+        },
+        {
+          "day": 2,
+          "title": "Committing",
+          "type": "scripture_study",
+          "scripture": "Hebrews 10:24-25",
+          "questions": [
+            "Why is communal support so important for the writer of Hebrews and why be so adamant about not giving in to the habit of isolation? What's at stake?",
+            "How does mutual encouragement and collaboration impact our obedience to Jesus?",
+            "Can we follow Jesus fully on our own? Why or why not?",
+            "Is our current gravitational pull towards community or isolation? Why?"
+          ],
+          "quotes": [
+            {
+              "text": "Let him who cannot be alone beware of community... Let him who is not in community beware of being alone... Each by itself has profound perils and pitfalls. One who wants fellowship without solitude plunges into the void of words and feelings, and the one who seeks solitude without fellowship perishes in the abyss of vanity, self-infatuation and despair.",
+              "author": "Dietrich Bonhoeffer"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "title": "A Community of Love",
+          "type": "scripture_study",
+          "scripture": "1 Corinthians 13:1-8",
+          "questions": [
+            "Paul speaks of the danger of doing religious things without love. Why is this so tempting, and why is it so harmful?",
+            "He then lays out a list of defining characteristics of a loving community. What does a loving community refuse to do? What is it committed to doing?",
+            "Where are you strongest and weakest? What's your next step to grow in love?"
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Confession",
+          "type": "scripture_study",
+          "scripture": "James 5:16 and 1 John 1:5-10",
+          "questions": [
+            "What is the power of confession according to these passages?",
+            "How does walking in darkness vs. light affect our fellowship with God and others?",
+            "What barriers prevent you from being honest about your struggles with trusted believers?",
+            "What would it look like to 'confess your sins to each other' in healthy, appropriate ways?"
+          ]
+        },
+        {
+          "day": 5,
+          "title": "A True Friend",
+          "type": "scripture_study",
+          "scripture": "Proverbs 18:24, Proverbs 27:17, and Romans 16:3-16",
+          "questions": [
+            "What is the power of a real friend? Have you experienced this power? If so, how?",
+            "What's your next step in becoming this kind of friend within the family of God?"
+          ],
+          "quotes": [
+            {
+              "text": "There is a certain 'niceness' to a friendship where I can be, as they say, myself. But what I really need are relationships in which I will be encouraged to become better than myself. Myself needs to grow a little each day. I don't want to be the myself I was yesterday. I want to be the myself that is developing each day to be more of a Christlike person.",
+              "author": "Gordon MacDonald"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "title": "Forgiving Others",
+          "type": "scripture_study",
+          "scripture": "Matthew 18:21-35 and Matthew 6:12-15",
+          "questions": [
+            "How is forgiveness to others connected to our relationship with God?",
+            "What barriers exist between us and God when we choose not to forgive others?",
+            "What's at stake if we choose not to forgive others?",
+            "How might we experience a similar, personal jailing of the soul if we don't forgive?",
+            "Is there anyone in your life you have not forgiven? If so, what step can you take this week to forgive them and repair that relationship?",
+            "Can you imagine what a church would look like if it regularly practiced forgiveness for each other?"
+          ],
+          "quotes": [
+            {
+              "text": "Resentment is like drinking poison and waiting for the other person to die.",
+              "author": "Carrie Fisher"
+            },
+            {
+              "text": "Real forgiveness means looking steadily at the sin, the sin that is…without any excuse…and seeing it in all its horror, dirt, meanness, and malice, and nevertheless being wholly reconciled to the man who has done it…To be a Christian means to forgive the inexcusable, because God has forgiven the inexcusable in you",
+              "author": "C. S. Lewis"
+            }
+          ]
+        }
+      ]
+    },
+    "radiance": {
+      "id": 4,
+      "title": "The Habit of Radiance",
+      "week": 5,
+      "core_habit": "Share your faith every week",
+      "scripture_reference": "Romans 1:16",
+      "quote": "For I am not ashamed of the gospel, because it is the power of God that brings salvation to everyone who believes...",
+      "daily_exercises": [
+        {
+          "day": 1,
+          "title": "Radiance Evaluation",
+          "type": "assessment",
+          "content": "On a scale of 1 to 10, rate where you fall in each area.",
+          "evaluation_items": [
+            "I regularly pray for people who are far from God",
+            "I live each day aware of the reality of heaven and hell",
+            "I live each week as though I care about the lost",
+            "I engage in a spiritual conversation with anyone far from God every week",
+            "I recognize opportunities throughout each week to share Christ",
+            "I invite people to church regularly",
+            "I am living with a holy sense of urgency to reach the lost"
+          ],
+          "reflection_prompts": [
+            "What stood out to you most?",
+            "Where are you currently strongest?",
+            "Where do you need to grow most?",
+            "What are 2-3 action steps you can take this week to grow?"
+          ]
+        },
+        {
+          "day": 2,
+          "title": "Building Your Oikos Map",
+          "type": "practical_exercise",
+          "content": "God has designed us to influence the world for Christ. His plan is for us to begin with the people who are in our immediate sphere of influence every single day.",
+          "scripture": "Acts 11:14, Acts 16:14-15, Acts 16:31, Acts 18:8",
+          "action_items": [
+            {
+              "type": "mapping",
+              "title": "Oikos Map Exercise",
+              "instructions": "Identify at least five names of those who are in your regular sphere of influence (home, hobbies, friends, work) who do not yet know Jesus, and write down their names.",
+              "reflection_questions": [
+                "What do I enjoy doing regularly?",
+                "How can I meet new friends with this activity?",
+                "Where do I regularly frequent or could start frequenting to meet new people?",
+                "Who can I start getting to know and what's my next step?"
+              ]
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "title": "Begin with Prayer",
+          "type": "scripture_study",
+          "scripture": "Colossians 4:2-6",
+          "questions": [
+            "Paul talks about a commitment to praying for open doors to share Jesus with others. Do you actively look for opportunities to share your faith, 'being watchful,' and pray for those doors to open? Why or why not?",
+            "What are your current opportunities to share your faith?",
+            "Sharing your faith can be intimidating. What difference would it make for you to pray regularly that God would give you wisdom and boldness?"
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Listen",
+          "type": "scripture_study",
+          "scripture": "John 4:1-26",
+          "questions": [
+            "Jesus models the power of being present with and listening to those He's drawing to Himself. How did Jesus' questions lead to a spiritual conversation?",
+            "What does it take to be a good listener and question asker?",
+            "How could you begin spiritual conversations by asking questions of those in your sphere of influence who do not yet know Jesus?"
+          ],
+          "quotes": [
+            {
+              "text": "Seek first to understand then to be understood.",
+              "author": "Stephen Covey"
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "title": "Eating and Serving",
+          "type": "scripture_study",
+          "scripture": "Matthew 9:9-13",
+          "questions": [
+            "Jesus was constantly sharing meals with people, especially those who were far from Him. What did His meal with Matthew and his tax collector friends communicate about Jesus' heart for them?",
+            "What kind of barriers were broken by sharing a meal together?",
+            "Who could you start sharing meals with to build relationships that could lead to gospel conversations?"
+          ],
+          "quotes": [
+            {
+              "text": "Our post-Christian culture is yearning for a deep meaningful dialogue about spiritual things. Our post-family culture is looking for a place where they can belong. Our post-technology culture is seeking out genuine interactions. Our post-super-size culture desires intimate communities",
+              "author": "Craig Springer"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "title": "The Power of Story",
+          "type": "scripture_study",
+          "scripture": "John 9 (focus on v.25)",
+          "questions": [
+            "What was powerful about this man's story?",
+            "Have you considered that people can argue with your opinions or convictions, but they cannot argue with your story? What is the power of this reality?"
+          ],
+          "action_items": [
+            {
+              "type": "story_writing",
+              "title": "Write Your Story",
+              "instructions": "Write out your story of life-change with Jesus in a condensed two-minute version to be ready to share with those who do not yet believe. Include these three elements:",
+              "elements": [
+                "Who were you before Jesus?",
+                "How did you collide with His grace?",
+                "What difference has Jesus made?"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "response": {
+      "id": 5,
+      "title": "The Habit of Response",
+      "week": 6,
+      "core_habit": "Serve someone daily and your church twice a month",
+      "scripture_reference": "Mark 10:43-44",
+      "quote": "Whoever wants to become great among you must be your servant, and whoever wants to be first must be slave of all.",
+      "daily_exercises": [
+        {
+          "day": 1,
+          "title": "Response Evaluation",
+          "type": "assessment",
+          "content": "On a scale of 1 to 10, rate where you fall in each area.",
+          "evaluation_items": [
+            "I see service not as an obligation, but as a joyful response to how Jesus has served me",
+            "I intentionally look for opportunities to serve others, not just when it's convenient",
+            "I serve with humility, not seeking recognition or reward",
+            "I regularly sacrifice my time, comfort, and resources to meet the needs of others",
+            "I treat every person I serve—regardless of status—with the dignity and compassion of Jesus",
+            "I serve consistently in my church, family, and community as a lifestyle, not a one-time event",
+            "When I serve, I pray and act with the hope that others will experience the love of Jesus through me"
+          ],
+          "reflection_prompts": [
+            "What stood out to you most?",
+            "Where are you currently strongest?",
+            "Where do you need to grow most?",
+            "What are 2-3 action steps you can take this week to grow?"
+          ]
+        },
+        {
+          "day": 2,
+          "title": "Stewarding Your Gift",
+          "type": "scripture_study",
+          "scripture": "1 Peter 4:10",
+          "questions": [
+            "What is the difference between ownership and stewardship?",
+            "What difference does it make to reframe your personality, experiences and abilities as gifts from God rather than yours to own?",
+            "How does exercising your gift reflect faithful stewardship?"
+          ]
+        },
+        {
+          "day": 3,
+          "title": "Mission over Position",
+          "type": "scripture_study",
+          "scripture": "John 13:1-17",
+          "questions": [
+            "In a world where authority is often abused, how radically different is Jesus' example of serving at the lowest level?",
+            "Based on Jesus' demonstration, how does genuine faith express itself?",
+            "If the Author of Existence was willing to serve at the lowest level, what invitation is He giving us and what will it cost us?"
+          ],
+          "quotes": [
+            {
+              "text": "The Church is the Church only when it exists for others... not dominating, but helping and serving. It must tell men of every calling what it means to live for Christ, to exist for others.",
+              "author": "Dietrich Bonhoeffer"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "title": "True Greatness",
+          "type": "scripture_study",
+          "scripture": "Mark 10:42-45",
+          "questions": [
+            "In a culture of ambition and pursuits of self-actualization, how does Jesus reset the goal of His followers in this passage?",
+            "According to Jesus' statement, what attitude and posture does true service require?",
+            "Where are you tempted to redefine greatness as anything other than sacrificial service?"
+          ],
+          "quotes": [
+            {
+              "text": "Not all of us can do great things. But we can do small things with great love.",
+              "author": "Mother Teresa"
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "title": "Pure Motives",
+          "type": "scripture_study",
+          "scripture": "2 Corinthians 5:14-15",
+          "questions": [
+            "We can serve others for a variety of reasons. What ultimately compelled the apostle Paul to serve and what difference do you think it made for him?",
+            "How does Christ's love give us the most powerful fuel for serving others?",
+            "What would it look like for you to 'no longer live for [yourself]' and instead to live 'for him who died' and 'was raised again'?"
+          ]
+        },
+        {
+          "day": 6,
+          "title": "Getting Real",
+          "type": "scripture_study",
+          "scripture": "Micah 6:8, 1 John 3:18, and James 2:14-17",
+          "questions": [
+            "How is genuine faith revealed based on these passages?",
+            "Why is it important to know there is a difference between statement of faith and a lifestyle of faith?",
+            "How does a life of service reveal real faith?",
+            "What new routines of service could God be inviting you into to make your faith more authentic?"
+          ],
+          "quotes": [
+            {
+              "text": "Do not waste time bothering whether you 'love' your neighbor; act as if you did. As soon as we do this… we find one of the great secrets. When you are behaving as if you loved someone, you will presently come to love him.",
+              "author": "C. S. Lewis"
+            }
+          ]
+        }
+      ]
+    },
+    "resistance": {
+      "id": 6,
+      "title": "The Habit of Resistance",
+      "week": 7,
+      "core_habit": "Connect weekly with an accountability partner to set boundaries, resist temptations and replace them with living by God's design",
+      "scripture_reference": "Galatians 5:1",
+      "quote": "It is for freedom that Christ has set us free. Stand firm, then, and do not let yourselves be burdened again by a yoke of slavery.",
+      "daily_exercises": [
+        {
+          "day": 1,
+          "title": "Resistance Evaluation",
+          "type": "assessment",
+          "content": "On a scale of 1 to 10, rate where you fall in each area.",
+          "evaluation_items": [
+            "I am living from a posture of dependence, deeply aware of my own brokenness",
+            "I am living with honest, transparent accountability in my life",
+            "I take sexual sin as seriously as God takes it, and am living habitually free from destructive sexual habits",
+            "I have set and live by clear boundaries on my phone time, food consumption, and spending habits",
+            "I exercise strong control over my words and refuse to slander, gossip, or condemn others",
+            "I regularly access and depend on the resurrection power of Jesus to say 'no' to temptation and 'yes' to life in Him"
+          ],
+          "reflection_prompts": [
+            "What stood out to you most?",
+            "Where are you currently strongest?",
+            "Where do you need to grow most?",
+            "What are 2-3 action steps you can take this week to grow?"
+          ]
+        },
+        {
+          "day": 2,
+          "title": "Broken Down Walls",
+          "type": "scripture_study",
+          "scripture": "Proverbs 25:28 and 27:20",
+          "questions": [
+            "Walls in the ancient world provided security, fortification and protection against invading enemies. How is a lack of self-control like a city with broken down walls?",
+            "What areas have you been tempted to live vulnerable to hostile invading forces?",
+            "Think about the areas of temptation for you (phone, shopping, entertainment, porn, overworking). Have you found these desires ever truly satisfied by them? Why do you think that is?"
+          ],
+          "quotes": [
+            {
+              "text": "An ideology of extreme personal freedom can be dangerous because it encourages people to leave homes, jobs, cities, and marriages in search of personal and professional fulfillment, thereby breaking the relationships that were probably their best hope for such fulfillment.",
+              "author": "Jonathan Haidt"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "title": "Resist the Devil",
+          "type": "scripture_study",
+          "scripture": "Matthew 4:1-11 and James 4:7",
+          "questions": [
+            "What were the temptations Jesus faced and how did he resist them?",
+            "While it's tempting to think Jesus was more vulnerable to attack in the height of His 40 days of fasting, is it possible His self control and dependence on the Spirit made Him stronger against temptation? If so, how?",
+            "How does God increase our capacity to resist temptation when we're dependent upon Him?"
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Sexual Guardrails",
+          "type": "scripture_study",
+          "scripture": "1 Corinthians 6:12-20",
+          "questions": [
+            "Paul brings up this common thought in Corinth, 'Food for the stomach and the stomach for food, and God will destroy them both,' as if what we do with our bodies really doesn't matter. Do you hear similar cultural thoughts today?",
+            "Why is this line of thinking untrue and so dangerous?",
+            "Paul identifies sexuality as a deeply uniting act - 'one flesh.' If this is the case, why is it so important to reserve sexual expression for God's design only?",
+            "Finally, we learn that misusing our sexuality is actually abuse to ourselves. What do you need to do to better 'love thy body' by honoring God's design for sexuality?"
+          ]
+        },
+        {
+          "day": 5,
+          "title": "Fleeing Disastrous Lust",
+          "type": "scripture_study",
+          "scripture": "Proverbs 7",
+          "questions": [
+            "Based on this passage, what entices us to follow such dangerous paths? What are the consequences?",
+            "How is this much like modern pornography? ...or, let's be honest, how is this much like the emotional porn many women embrace through romance novels or the Hallmark Channel?",
+            "What steps do you need to take this week to steer clear of the dangerous path of visual or emotional lust?"
+          ]
+        },
+        {
+          "day": 6,
+          "title": "Freedom in Confession and Accountability",
+          "type": "scripture_study",
+          "scripture": "1 John 1:5-10 and Galatians 6:1-5",
+          "questions": [
+            "Can we hide anything from God? How does persisting in the darkness equate to us lying to ourselves to our own harm?",
+            "What power does confession have in this passage?",
+            "How important is it for us to be not only honest with ourselves, but also honest to God by confessing to others?",
+            "We're called to 'bear one another's burdens.' What's the goal of doing this?",
+            "Before calling out someone else's sin, this passage makes it clear we're to check ourselves. Why is this important?"
+          ],
+          "quotes": [
+            {
+              "text": "The more isolated a person is, the more destructive will be the power of sin over him and the more deeply he becomes involved in it, the more disastrous is his isolation … [but] the expressed, acknowledged sin has lost all its power.",
+              "author": "Dietrich Bonhoeffer"
+            }
+          ]
+        }
+      ]
+    },
+    "resources": {
+      "id": 7,
+      "title": "The Habit of Resources",
+      "week": 8,
+      "core_habit": "Structure your stewardship around priority, percentage, and progressive giving",
+      "scripture_reference": "Matthew 6:21",
+      "quote": "For where your treasure is, there your heart will be also.",
+      "daily_exercises": [
+        {
+          "day": 1,
+          "title": "Resources Evaluation",
+          "type": "assessment",
+          "content": "On a scale of 1 to 10, rate where you fall in each area.",
+          "evaluation_items": [
+            "I intentionally reject wealth as my ultimate source of safety, security, and status, because I find these things in Christ",
+            "I see my financial identity as a steward of God's resources rather than as an owner",
+            "I trust God more with money today than I did a month ago",
+            "I have a growing desire to be more generous",
+            "I live within my means and set aside money to give first before spending on anything else",
+            "I intentionally give a specific percentage of everything I earn",
+            "I have increased my overall giving in the last year"
+          ],
+          "reflection_prompts": [
+            "What stood out to you most?",
+            "Where are you currently strongest?",
+            "Where do you need to grow most?",
+            "What are 2-3 action steps you can take this week to grow?"
+          ]
+        },
+        {
+          "day": 2,
+          "title": "The Danger of Greed",
+          "type": "scripture_study",
+          "scripture": "Luke 12:13-21",
+          "questions": [
+            "Jesus warns us against greed, and its deceiving nature with the strong words 'watch out!' While planning for financial emergencies and retirement is not wrong, why is it dangerous to seek security only in our surplus?",
+            "Will it ever be enough? How does a lack of generosity leave our souls vulnerable and robbed?",
+            "Where might you be tempted to be greedy and what step can you take to fight it?"
+          ],
+          "quotes": [
+            {
+              "text": "Greed hides itself from the victim. The money god's modus operandi includes blindness to your own heart",
+              "author": "Tim Keller"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "title": "Lasting Treasure",
+          "type": "scripture_study",
+          "scripture": "Matthew 6:19-21 and Matthew 13:44-46",
+          "questions": [
+            "God connects our use of money with gaining false or lasting treasure. Do you see the way you handle money as an opportunity to gain eternal treasure? Why or why not?",
+            "How is eternal treasure far more secure than earthly treasure?",
+            "What would you be willing to change about your money habits to gain the kind of treasure and joy described in these passages?"
+          ],
+          "quotes": [
+            {
+              "text": "15% of everything Christ said relates to [money and possessions]. Why did Jesus put such an emphasis on money and possessions? Because there's a fundamental connection between our spiritual lives and how we think about and handle money.",
+              "author": "Randy Alcorn"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Building Hope",
+          "type": "scripture_study",
+          "scripture": "1 Timothy 6:17-19",
+          "questions": [
+            "Why is putting our hope in wealth so uncertain? Why does generosity give us a foundation?",
+            "What is it about generosity towards others that enables us to experience 'life that is truly life?'",
+            "What life are you missing out on by not exercising generosity?"
+          ],
+          "quotes": [
+            {
+              "text": "He is no fool who gives what he cannot keep to gain when he cannot lose.",
+              "author": "Jim Elliot"
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "title": "Living Within a Budget",
+          "type": "scripture_study",
+          "scripture": "Proverbs 23:4-5 and 30:8-9",
+          "questions": [
+            "We're told 'be wise enough to know when to quit.' What happens if we do not heed this wisdom in our spending habits?",
+            "Do you know when enough is enough? Have you developed a budget to help you know what to say 'yes' to and what to say 'no' to? Why or why not?",
+            "How can you live within a healthy budget with more consistency and integrity?"
+          ],
+          "quotes": [
+            {
+              "text": "Another benefit of giving is freedom. It's a matter of basic physics. The greater the mass, the greater the hold that mass exerts. The more things we own—the greater their total mass—the more they grip us, setting us in orbit around them. Finally, like a black hole, they suck us in. Giving changes all that. It breaks us out of orbit around our possessions.",
+              "author": "Randy Alcorn"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "title": "The Power of Contentment",
+          "type": "scripture_study",
+          "scripture": "1 Timothy 6:6-10 and Acts 20:35",
+          "questions": [
+            "Why is contentment so powerful and what does it take to get it?",
+            "Why is the love of money so destructive? What ruin have you experienced with loving money too much?",
+            "What steps can you take this week to build your contentment financially?",
+            "Jesus says generosity is a happier way to live. How have you experienced a blessing in your life when you've been generous?"
+          ],
+          "quotes": [
+            {
+              "text": "I have made many millions, but they have brought me no happiness.",
+              "author": "John D. Rockefeller"
+            },
+            {
+              "text": "The less I spent on myself and the more I gave to others, the fuller of happiness and blessing did my soul become",
+              "author": "Hudson Taylor"
+            }
+          ]
+        }
+      ]
+    },
+    "refuel": {
+      "id": 8,
+      "title": "The Habit of Refuel",
+      "week": 9,
+      "core_habit": "Practice living by grace through a weekly Sabbath routine",
+      "scripture_reference": "Exodus 20:8-10",
+      "quote": "Remember the Sabbath day by keeping it holy. Six days you shall labor and do all your work, but the seventh day is a sabbath to the Lord your God.",
+      "daily_exercises": [
+        {
+          "day": 1,
+          "title": "Refuel Evaluation",
+          "type": "assessment",
+          "content": "On a scale of 1 to 10, rate where you fall in each area.",
+          "evaluation_items": [
+            "I am living free from finding my worth in ceaseless activity",
+            "I find my worth in Christ and not my performance",
+            "I take a twenty-four-hour Sabbath each week to rest and delight",
+            "I live confidently aware that God delights in me and I am growingly delighting in God",
+            "I take time to intentionally plan my rest and delight before the Sabbath day comes",
+            "I deeply enjoy and look forward to the weekly gift of Sabbath",
+            "I now live the other six days of the week differently because of the Sabbath"
+          ],
+          "reflection_prompts": [
+            "What stood out to you most?",
+            "Where are you currently strongest?",
+            "Where do you need to grow most?",
+            "What are 2-3 action steps you can take this week to grow?"
+          ]
+        },
+        {
+          "day": 2,
+          "title": "Healthy Pace & Rest",
+          "type": "scripture_study",
+          "scripture": "Exodus 16",
+          "questions": [
+            "The Israelites were slaves for 400 years prior to their liberation from Egypt. Given this perceived identity and generational experience, why was it so difficult for the people to 'stop' gathering food?",
+            "God called them to practice Sabbath—to stop working, stop wanting, stop anxiously striving, and simply be. What did their ceaseless activity communicate about where they derived their sense of safety, security, and value?",
+            "How does the practice of sabbath reset our trust, health, identity, and our personal value?"
+          ],
+          "quotes": [
+            {
+              "text": "Sabbath is a way to stay free and make sure you never get sucked back into slavery or, worse, become the slave driver yourself.",
+              "author": "John Mark Comer"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "title": "The Hard Work of Rest",
+          "type": "scripture_study",
+          "scripture": "Hebrews 4:1-11",
+          "questions": [
+            "The author challenges us to 'make every effort' to enter a 'Sabbath rest,' trusting that we are saved by God's effort, not ours. How does resting from our own effort bring us to trust God and kill the 'work under the work' of trying to prove and save ourselves?",
+            "The barrier to not entering God's rest is a hard heart. How does it reveal a hard heart if we stubbornly continue to work and refuse to rest and delight in God?",
+            "What intentionality is needed to plan no activity, busyness, or distraction for 24 hours?"
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Self-Denial and Rest",
+          "type": "scripture_study",
+          "scripture": "Leviticus 23:26-32",
+          "questions": [
+            "As part of celebrating The Day of Atonement, remembering God's reconciling work on their behalf, the people of God were challenged, 'you must deny yourselves,' cease all work and rest. How is choosing to rest from our busy activity an act of self-denial?",
+            "What is the most challenging part of resting from your work? Mentally? Emotionally?"
+          ],
+          "quotes": [
+            {
+              "text": "Sabbath is not dependent upon our readiness to stop. We do not stop when we are finished... We stop because it is time to stop. Sabbath requires surrender... If we refuse to rest until we are finished, we will never rest until we die. Sabbath dissolves the artificial urgency of our days, because it liberates us from the need to be finished... Sabbath says, Be still. Stop. There is no rush…because we are never finished.",
+              "author": "Wayne Muller"
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "title": "Choose Delight",
+          "type": "scripture_study",
+          "scripture": "Psalm 37:4",
+          "questions": [
+            "The Sabbath is an invitation to enter delight. What brings you delight that will 1) help you rest and worship God, and 2) does not border on work, duty, or achievement?",
+            "How could you incorporate that into your Sabbath and better practice delight?"
+          ],
+          "quotes": [
+            {
+              "text": "The Sabbath is an invitation to enter delight. The Sabbath, when experienced as God intended… is the best day of the week. It is the day we anticipate on Wednesday, Thursday, and Friday—and the day we remember on Sunday, Monday, and Tuesday. Sabbath is the holy time where we feast, play, dance, have sex, sing, pray, laugh, tell stories, read, paint, walk, and watch creation in its fullness.",
+              "author": "Dan Allender"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "title": "Repentance and Rest",
+          "type": "scripture_study",
+          "scripture": "Isaiah 58:13-14",
+          "content": "John Mark Comer provides a comparative list of restfulness against restlessness. Which best describes you?",
+          "questions": [
+            "How could finding your delight in the Lord by slowing down, embracing your limits in rest, and practicing delighting in God help restore your restfulness?",
+            "What would it take for you to embrace delight and become more restful?"
+          ],
+          "quotes": [
+            {
+              "text": "You have made us for yourself and our heart is restless until it finds rest in you",
+              "author": "Saint Augustine"
+            }
+          ],
+          "comparison_lists": {
+            "restfulness": ["Margin", "Slowness", "Quiet", "Deep relationships", "Time Alone", "Delight", "Enjoyment", "Clarity", "Gratitude", "Contentment", "Trust", "Love", "Joy", "Peace", "Working from love", "Work as contribution"],
+            "restlessness": ["Busyness", "Hurry", "Noise", "Isolation", "Crowds", "Distraction", "Envy", "Confusion", "Greed", "Discontentment", "Worry", "Anger, angst", "Melancholy, sadness", "Anxiety", "Working for love", "Work as accumulation and accomplishment"]
+          }
+        }
+      ]
+    },
+    "replication": {
+      "id": 9,
+      "title": "The Habit of Replication",
+      "week": 10,
+      "core_habit": "Build an intentional circle of discipleship",
+      "scripture_reference": "2 Timothy 2:2",
+      "quote": "And the things you have heard me say in the presence of many witnesses entrust to reliable people who will also be qualified to teach others.",
+      "daily_exercises": [
+        {
+          "day": 1,
+          "title": "Replication Evaluation",
+          "type": "assessment",
+          "content": "On a scale of 1 to 10, rate where you fall in each area.",
+          "evaluation_items": [
+            "I believe God has called and equipped me to help others follow Jesus",
+            "I am eager to help others grow spiritually",
+            "I regularly initiate spiritually life-giving conversations with others",
+            "I have developed relationships with others who are hungry to grow spiritually",
+            "I am experiencing the joy of playing a role in the spiritual growth of another",
+            "I can point to a growing number of people whom I am discipling",
+            "I am careful to continue to grow in my own spiritual journey, so I can help others grow"
+          ],
+          "reflection_prompts": [
+            "What stood out to you most?",
+            "Where are you currently strongest?",
+            "Where do you need to grow most?",
+            "What are 2-3 action steps you can take this week to grow?"
+          ]
+        },
+        {
+          "day": 2,
+          "title": "Intentionally Choose and Build Into Others",
+          "type": "scripture_study",
+          "scripture": "Mark 3:13-19 and John 14:12",
+          "questions": [
+            "After prayer, Jesus intentionally chose a few people to invest in relationally and empower for ministry. How did Jesus' leadership style change the world?",
+            "What was His vision for their life and impact in John 14:12?",
+            "What would it look like to help others develop in God's purposes for their lives?",
+            "Who will you choose to invest in and how will you relationally invest in them?"
+          ],
+          "quotes": [
+            {
+              "text": "One must decide if he wants his ministry to count in momentary applause of popular recognition or the reproduction of his life in a few chosen men to carry on his work after he is gone.",
+              "author": "Robert Coleman"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "title": "Passing it On and On and…",
+          "type": "scripture_study",
+          "scripture": "2 Timothy 2:2",
+          "questions": [
+            "It's been said that every follower of Jesus needs a Paul (someone further along who we can learn from), a Barnabas (a peer who encourages and holds accountable), and a Timothy (a younger believer who we are building into). What is the unique value of each of these relationships?",
+            "Why are they important for our ongoing growth?",
+            "Paul speaks of finding 'reliable' people to build into. What do you think he was challenging Timothy to look for, and why is that important?",
+            "Can you identify people who occupy these roles in your life? If not, who could?"
+          ],
+          "quotes": [
+            {
+              "text": "Christianity without the living Christ is inevitably Christianity without discipleship, and Christianity without discipleship is always Christianity without Christ.",
+              "author": "Dietrich Bonhoeffer"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Generations of Disciple-Makers",
+          "type": "scripture_study",
+          "scripture": "2 Timothy 1:5 and 2 Timothy 3:14-17",
+          "questions": [
+            "Timothy's faith was clearly shaped by his mom and grandmother's faith. What difference do you think it made for Timothy to have such a rich heritage?",
+            "Who is a part of your spiritual heritage, blood-related or not?",
+            "Paul clearly calls Timothy to take what was imparted to him and share it with others. Have you considered that you are a part of a spiritual heritage with the same calling to pass it on to others?",
+            "Have you ever felt like you were not mature enough or ready enough to build into others? If so, what if your greatest growth only happens when you pour into someone else?"
+          ],
+          "quotes": [
+            {
+              "text": "Ministry [serving & discipling others] is the pathway to maturity, not the other way around.",
+              "author": "Robby Gallaty"
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "title": "Leading by Example",
+          "type": "scripture_study",
+          "scripture": "1 Corinthians 11:1, 1 Timothy 4:12 and 2 Timothy 4:6-7",
+          "questions": [
+            "It is easy to lead merely with words, 'Do as I say, not as I do.' But what is the power of leading by example, as Paul did and encouraged Timothy to do?",
+            "Who has modeled a godly life worth imitating for you?",
+            "Though none of us will perfect our COST habits, how important is it to make these habits an increasing priority, to sustain our process, and to make progress when we lead others?",
+            "Are you growing in your COST habits and leading by example?"
+          ],
+          "quotes": [
+            {
+              "text": "We must not cry 'Go on,' but 'Come on.' Our people may justly expect of us that we should be among the most self-denying, the most laborious, and the most earnest in the church, and someone more.",
+              "author": "Charles Spurgeon"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "title": "Longing to Invest",
+          "type": "scripture_study",
+          "scripture": "Romans 1:11-12",
+          "questions": [
+            "The apostle Paul clearly longs to invest in others spiritually. What compelled Paul to not only treasure Jesus, but also long to help others grow in their faith?",
+            "Do you also long to give others a 'spiritual gift' to help them become mature in Christ? Why or why not?",
+            "Are you inviting God to show you who He wants you to COST train?"
+          ],
+          "quotes": [
+            {
+              "text": "I misunderstood that being a disciple or apprentice of Jesus was primarily about me in the sense of my relationship with God and my relationship with others... One test of whether we're [following Jesus] is whether we're reproducing and multiplying other Christ followers, who in turn do likewise.",
+              "author": "Dave Ferguson"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
