@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
-import { CheckSquare, BarChart3, Target, TrendingUp, AlertCircle } from "lucide-react";
+import { CheckSquare, BarChart3, Target, TrendingUp, AlertCircle, Save } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface AssessmentItem {
@@ -91,13 +91,22 @@ export const InteractiveAssessment = ({
   };
 
   const results = calculateResults();
-  const isComplete = results.completedItems === results.totalItems;
+  const isRatingsComplete = results.completedItems === results.totalItems;
+  const isReflectionsComplete = reflectionPrompts.length === 0 || 
+    Object.keys(reflectionAnswers).filter(key => 
+      reflectionAnswers[parseInt(key)]?.trim().length > 0
+    ).length === reflectionPrompts.length;
+  
+  const isReadyToSubmit = isRatingsComplete && isReflectionsComplete;
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  useEffect(() => {
-    if (isComplete && onComplete) {
+  // Handle manual submission
+  const handleSubmit = () => {
+    if (isReadyToSubmit && onComplete) {
+      setIsSubmitted(true);
       onComplete(results);
     }
-  }, [isComplete, onComplete]);
+  };
 
   const getScoreColor = (score: number) => {
     if (score >= 8) return "text-green-600";
@@ -285,7 +294,7 @@ export const InteractiveAssessment = ({
             )}
 
             {/* Completion Status */}
-            {!isComplete && (
+            {!isRatingsComplete && (
               <div className="text-center p-4 bg-blue-50 rounded-lg">
                 <p className="text-sm text-blue-700">
                   Complete all ratings to see your full assessment results and reflection prompts.
@@ -297,7 +306,7 @@ export const InteractiveAssessment = ({
       )}
 
       {/* Reflection Section */}
-      {isComplete && (
+      {isRatingsComplete && (
         <Card>
           <CardHeader>
             <CardTitle>Reflection Questions</CardTitle>
@@ -315,12 +324,51 @@ export const InteractiveAssessment = ({
                 />
               </div>
             ))}
+            
+            {/* Submit Button */}
+            {isReadyToSubmit && !isSubmitted && (
+              <div className="text-center p-4 space-y-3">
+                <p className="text-sm text-green-700">
+                  ✓ All questions completed! Ready to submit your assessment.
+                </p>
+                <Button
+                  onClick={handleSubmit}
+                  size="lg"
+                  className="bg-green-600 hover:bg-green-700 text-white"
+                >
+                  <Save className="w-4 h-4 mr-2" />
+                  Submit Assessment
+                </Button>
+              </div>
+            )}
+            
+            {/* Progress Status */}
+            {isRatingsComplete && !isReadyToSubmit && (
+              <div className="text-center p-4 bg-orange-50 rounded-lg">
+                <p className="text-sm text-orange-700">
+                  Complete all reflection questions to submit your assessment.
+                </p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Reflections completed: {Object.keys(reflectionAnswers).filter(key => 
+                    reflectionAnswers[parseInt(key)]?.trim().length > 0
+                  ).length} of {reflectionPrompts.length}
+                </p>
+              </div>
+            )}
+            
+            {isSubmitted && (
+              <div className="text-center p-4 bg-green-50 rounded-lg">
+                <p className="text-sm text-green-700 font-medium">
+                  ✓ Assessment Submitted Successfully! Your responses have been saved.
+                </p>
+              </div>
+            )}
           </CardContent>
         </Card>
       )}
 
       {/* Action Items */}
-      {isComplete && (
+      {isSubmitted && (
         <Card>
           <CardHeader>
             <CardTitle>Next Steps</CardTitle>

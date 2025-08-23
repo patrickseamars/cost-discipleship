@@ -4,6 +4,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Loader2, Book } from "lucide-react";
+import sectionOverviewsData from "@/data/section-overviews.json";
+import dailyExercisesData from "@/data/daily-exercises.json";
+import sectionSummariesData from "@/data/section-summaries.json";
 
 const SECTIONS = [
   { key: "relationship", name: "Relationship", number: 1 },
@@ -24,27 +27,15 @@ const SectionDemo = () => {
   const [summaryData, setSummaryData] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const loadSectionData = async (sectionKey: string) => {
+  const loadSectionData = (sectionKey: string) => {
     setLoading(true);
     try {
-      // Get the base path for API calls
-      const basePath = import.meta.env.PROD ? '/cost-discipleship' : '';
+      // Use imported JSON data directly
+      setOverviewData(sectionOverviewsData.sections[sectionKey]);
+      setExerciseData(dailyExercisesData.sections[sectionKey]);
+      setSummaryData(sectionSummariesData.sections[sectionKey]);
       
-      // Load overview data
-      const overviewResponse = await fetch(`${basePath}/src/data/section-overviews.json`);
-      const overviewJson = await overviewResponse.json();
-      setOverviewData(overviewJson.sections[sectionKey]);
-
-      // Load exercise data  
-      const exerciseResponse = await fetch(`${basePath}/src/data/daily-exercises.json`);
-      const exerciseJson = await exerciseResponse.json();
-      setExerciseData(exerciseJson.sections[sectionKey]);
-
-      // Load summary data
-      const summaryResponse = await fetch(`${basePath}/src/data/section-summaries.json`);
-      const summaryJson = await summaryResponse.json();
-      setSummaryData(summaryJson.sections[sectionKey]);
-
+      console.log('Loaded overview data for', sectionKey, ':', sectionOverviewsData.sections[sectionKey]);
     } catch (error) {
       console.error('Error loading section data:', error);
     } finally {

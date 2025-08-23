@@ -3,8 +3,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { CheckSquare, BarChart3, Target, TrendingUp, AlertCircle, RefreshCw, Calendar } from "lucide-react";
+import { CheckSquare, BarChart3, Target, TrendingUp, AlertCircle, RefreshCw, Calendar, Edit3, Save } from "lucide-react";
 import { InteractiveAssessment } from "./InteractiveAssessment";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import { assessmentStorage } from "@/lib/assessmentStorage";
 
 interface AssessmentItem {
   text: string;
@@ -50,7 +53,68 @@ export const CompletedAssessment = ({
   reflectionPrompts,
   onComplete
 }: CompletedAssessmentProps) => {
+  const { toast } = useToast();
   const [showRetake, setShowRetake] = useState(false);
+  const [isEditingReflections, setIsEditingReflections] = useState(false);
+  const [editedReflections, setEditedReflections] = useState<{ [key: number]: string }>({});
+  
+  // Initialize edited reflections with current values
+  const initializeEditedReflections = () => {
+    const initialReflections: { [key: number]: string } = {};
+    reflectionPrompts.forEach((_, index) => {
+      initialReflections[index] = assessment.results.reflectionAnswers[index] || '';
+    });
+    setEditedReflections(initialReflections);
+  };
+  
+  // Handle reflection editing
+  const handleEditReflections = () => {
+    initializeEditedReflections();
+    setIsEditingReflections(true);
+  };
+  
+  // Handle reflection change
+  const handleReflectionChange = (index: number, value: string) => {
+    setEditedReflections(prev => ({
+      ...prev,
+      [index]: value
+    }));
+  };
+  
+  // Save edited reflections
+  const saveEditedReflections = () => {
+    // Update the assessment with new reflection answers
+    const updatedResults = {
+      ...assessment.results,
+      reflectionAnswers: editedReflections
+    };
+    
+    // Save the updated assessment
+    assessmentStorage.saveAssessment(
+      assessment.sectionKey,
+      assessment.sectionTitle,
+      assessment.assessmentType,
+      updatedResults,
+      assessment.evaluationItems
+    );
+    
+    // Update the local assessment object to reflect changes immediately
+    assessment.results.reflectionAnswers = editedReflections;
+    
+    setIsEditingReflections(false);
+    setEditedReflections({});
+    
+    toast({
+      title: "Reflections Updated! ✍️",
+      description: "Your reflection responses have been updated successfully.",
+    });
+  };
+  
+  // Cancel editing
+  const cancelEditing = () => {
+    setIsEditingReflections(false);
+    setEditedReflections({});
+  };
   
   if (showRetake) {
     return (
@@ -229,19 +293,80 @@ export const CompletedAssessment = ({
       {results.reflectionAnswers && Object.keys(results.reflectionAnswers).length > 0 && (
         <Card>
           <CardHeader>
-            <CardTitle>Your Reflection Responses</CardTitle>
+            <div className="flex items-center justify-between">
+              <CardTitle>Your Reflection Responses</CardTitle>
+              {!isEditingReflections && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleEditReflections}
+                  className="flex items-center gap-2"
+                >
+                  <Edit3 className="w-4 h-4" />
+                  Edit Reflections
+                </Button>
+              )}
+              {isEditingReflections && (
+                <div className="flex gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={cancelEditing}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    variant="default"
+                    size="sm"
+                    onClick={saveEditedReflections}
+                    className="flex items-center gap-2"
+                  >
+                    <Save className="w-4 h-4" />
+                    Save Changes
+                  </Button>
+                </div>
+              )}
+            </div>
           </CardHeader>
           <CardContent className="space-y-4">
             {reflectionPrompts.map((prompt, index) => (
               <div key={index} className="space-y-2">
                 <p className="text-sm font-medium">{prompt}</p>
-                <div className="bg-muted/30 p-3 rounded-lg">
-                  <p className="text-sm text-muted-foreground">
-                    {results.reflectionAnswers[index] || "No response provided"}
-                  </p>
-                </div>
+                {isEditingReflections ? (
+                  <Textarea
+                    value={editedReflections[index] || ''}
+                    onChange={(e) => handleReflectionChange(index, e.target.value)}
+                    placeholder="Write your reflection here..."
+                    className="min-h-[80px] resize-none"
+                  />
+                ) : (
+                  <div className="bg-muted/30 p-3 rounded-lg">
+                    <p className="text-sm text-muted-foreground">
+                      {results.reflectionAnswers[index] || "No response provided"}
+                    </p>
+                  </div>
+                )}
               </div>
             ))}
+            
+            {isEditingReflections && (
+              <div className="flex gap-2 pt-4 border-t">
+                <Button
+                  variant="outline"
+                  onClick={cancelEditing}
+                  className="flex-1"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  onClick={saveEditedReflections}
+                  className="flex-1 flex items-center justify-center gap-2"
+                >
+                  <Save className="w-4 h-4" />
+                  Save All Changes
+                </Button>
+              </div>
+            )}
           </CardContent>
         </Card>
       )}

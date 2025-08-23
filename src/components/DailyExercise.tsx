@@ -4,10 +4,11 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Book, HelpCircle, Quote, CheckSquare, Star, Save } from "lucide-react";
+import { Book, HelpCircle, Quote, CheckSquare, Star, Save, Check, Edit3 } from "lucide-react";
 import { InteractiveAssessment } from "./InteractiveAssessment";
 import { CompletedAssessment } from "./CompletedAssessment";
 import { assessmentStorage } from "@/lib/assessmentStorage";
+import { completionStorage } from "@/lib/completionStorage";
 import { useToast } from "@/hooks/use-toast";
 
 interface DailyExerciseProps {
@@ -34,14 +35,21 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey }: DailyExerc
   // State for reflection answers and question answers
   const [reflectionAnswers, setReflectionAnswers] = useState<{ [key: number]: string }>({});
   const [questionAnswers, setQuestionAnswers] = useState<{ [key: number]: string }>({});
+  const [isDayCompleted, setIsDayCompleted] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   
   // Load saved reflections and questions on component mount
   useEffect(() => {
     // Clear all state first when switching exercises/days
     setReflectionAnswers({});
     setQuestionAnswers({});
+    setIsDayCompleted(false);
     
     if (sectionKey) {
+      // Check if day is already completed
+      const completed = completionStorage.isDayComplete(sectionKey, exercise.day);
+      setIsDayCompleted(completed);
+      setIsEditing(!completed); // Start in edit mode if not completed
       // Load reflection prompts (for assessments)
       if (exercise.reflection_prompts && exercise.reflection_prompts.length > 0) {
         const storageKey = `reflections_${sectionKey}_day${exercise.day}`;
@@ -72,6 +80,63 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey }: DailyExerc
     }
   }, [sectionKey, exercise.day, exercise.reflection_prompts, exercise.questions]);
   
+  // Check if all required content is completed
+  const checkForAutoCompletion = () => {
+    if (!sectionKey) return;
+    
+    // For assessments, completion is handled by the assessment components
+    if (exercise.type === 'assessment') return;
+    
+    let allCompleted = true;
+    
+    // Check if all questions are answered (if any exist)
+    if (exercise.questions && exercise.questions.length > 0) {
+      const answeredQuestions = Object.keys(questionAnswers).filter(key => 
+        questionAnswers[parseInt(key)]?.trim().length > 0
+      ).length;
+      
+      if (answeredQuestions < exercise.questions.length) {
+        allCompleted = false;
+      }
+    }
+    
+    // Check if all reflection prompts are answered (if any exist)
+    if (exercise.reflection_prompts && exercise.reflection_prompts.length > 0) {
+      const answeredReflections = Object.keys(reflectionAnswers).filter(key => 
+        reflectionAnswers[parseInt(key)]?.trim().length > 0
+      ).length;
+      
+      if (answeredReflections < exercise.reflection_prompts.length) {
+        allCompleted = false;
+      }
+    }
+    
+    // If there are no questions or reflections, consider it completed when user visits
+    const hasContent = (exercise.questions && exercise.questions.length > 0) || 
+                      (exercise.reflection_prompts && exercise.reflection_prompts.length > 0);
+    
+    if (!hasContent) {
+      allCompleted = true;
+    }
+    
+    // Auto-complete if all content is filled and not already completed
+    if (allCompleted && !isDayCompleted) {
+      completionStorage.markDayComplete(sectionKey, exercise.day);
+      setIsDayCompleted(true);
+      setIsEditing(false);
+      
+      toast({
+        title: "Day Automatically Completed! 🎉",
+        description: `Great job! Day ${exercise.day} has been marked as complete since you've answered all questions.`,
+      });
+    }
+  };
+  
+  // Auto-check completion when answers change
+  useEffect(() => {
+    checkForAutoCompletion();
+  }, [questionAnswers, reflectionAnswers, sectionKey, exercise.day, exercise.type]);
+  
   // Handle reflection input changes
   const handleReflectionChange = (index: number, value: string) => {
     setReflectionAnswers(prev => ({
@@ -98,6 +163,12 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey }: DailyExerc
         title: "Reflections Saved! ✍️",
         description: "Your reflection responses have been saved.",
       });
+      
+      // Exit edit mode after saving
+      setIsEditing(false);
+      
+      // Check for auto-completion after saving
+      setTimeout(checkForAutoCompletion, 100);
     }
   };
   
@@ -111,7 +182,31 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey }: DailyExerc
         title: "Answers Saved! ✍️",
         description: "Your question responses have been saved.",
       });
+      
+      // Exit edit mode after saving
+      setIsEditing(false);
+      
+      // Check for auto-completion after saving
+      setTimeout(checkForAutoCompletion, 100);
     }
+  };
+  
+  // Mark day as complete
+  const markDayComplete = () => {
+    if (sectionKey) {
+      completionStorage.markDayComplete(sectionKey, exercise.day);
+      setIsDayCompleted(true);
+      
+      toast({
+        title: "Day Completed! 🎉",
+        description: `Day ${exercise.day} has been marked as complete.`,
+      });
+    }
+  };
+  
+  // Enable editing mode
+  const enableEditing = () => {
+    setIsEditing(true);
   };
 
   // Handle assessment type with dedicated component
@@ -138,14 +233,14 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey }: DailyExerc
                 results,
                 exercise.evaluation_items!
               );
+              
+              // Mark assessment day as complete
+              completionStorage.markDayComplete(sectionKey, exercise.day);
 
               toast({
                 title: "Assessment Updated! 📊",
                 description: "Your assessment has been updated. You can view your results above.",
               });
-              
-              // Force a re-render by updating the page
-              window.location.reload();
             }
           }}
         />
@@ -168,14 +263,14 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey }: DailyExerc
                 results,
                 exercise.evaluation_items!
               );
+              
+              // Mark assessment day as complete
+              completionStorage.markDayComplete(sectionKey, exercise.day);
 
               toast({
                 title: "Assessment Saved! 📊",
                 description: "Your initial assessment has been saved. Complete the week to see your progress!",
               });
-              
-              // Force a re-render to show completed state
-              window.location.reload();
             }
           }}
         />
@@ -213,9 +308,16 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey }: DailyExerc
     <div className="space-y-6">
       {/* Header */}
       <div className="text-center space-y-2">
-        <Badge variant="outline" className="text-lg px-4 py-2">
-          Day {exercise.day}
-        </Badge>
+        <div className="flex items-center justify-center gap-2">
+          <Badge variant="outline" className="text-lg px-4 py-2">
+            Day {exercise.day}
+          </Badge>
+          {isDayCompleted && (
+            <Badge variant="default" className="text-sm px-3 py-1 bg-green-600">
+              ✓ Complete
+            </Badge>
+          )}
+        </div>
         <h1 className="text-2xl font-bold text-primary">{exercise.title}</h1>
         <p className="text-sm text-muted-foreground">{sectionTitle}</p>
         <div className="flex items-center justify-center gap-2">
@@ -281,17 +383,30 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey }: DailyExerc
                     <HelpCircle className="w-4 h-4" />
                     Reflection Questions:
                   </h3>
-                  {Object.keys(questionAnswers).length > 0 && (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      onClick={saveQuestions}
-                      className="flex items-center gap-2"
-                    >
-                      <Save className="w-4 h-4" />
-                      Save Answers
-                    </Button>
-                  )}
+                  <div className="flex items-center gap-2">
+                    {isDayCompleted && !isEditing && (
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={enableEditing}
+                        className="flex items-center gap-2"
+                      >
+                        <Edit3 className="w-4 h-4" />
+                        Edit
+                      </Button>
+                    )}
+                    {Object.keys(questionAnswers).length > 0 && isEditing && (
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={saveQuestions}
+                        className="flex items-center gap-2"
+                      >
+                        <Save className="w-4 h-4" />
+                        Save Answers
+                      </Button>
+                    )}
+                  </div>
                 </div>
                 <div className="space-y-4">
                   {exercise.questions.map((question, index) => (
@@ -302,11 +417,12 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey }: DailyExerc
                         value={questionAnswers[index] || ''}
                         onChange={(e) => handleQuestionChange(index, e.target.value)}
                         className="min-h-[80px] resize-none"
+                        disabled={isDayCompleted && !isEditing}
                       />
                     </div>
                   ))}
                 </div>
-                {Object.keys(questionAnswers).length > 0 && (
+                {Object.keys(questionAnswers).length > 0 && isEditing && (
                   <div className="mt-4 pt-4 border-t">
                     <Button
                       onClick={saveQuestions}
@@ -328,17 +444,30 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey }: DailyExerc
               <div>
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="font-semibold text-sm text-primary">Reflection Questions:</h3>
-                  {Object.keys(reflectionAnswers).length > 0 && (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      onClick={saveReflections}
-                      className="flex items-center gap-2"
-                    >
-                      <Save className="w-4 h-4" />
-                      Save Reflections
-                    </Button>
-                  )}
+                  <div className="flex items-center gap-2">
+                    {isDayCompleted && !isEditing && (
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={enableEditing}
+                        className="flex items-center gap-2"
+                      >
+                        <Edit3 className="w-4 h-4" />
+                        Edit
+                      </Button>
+                    )}
+                    {Object.keys(reflectionAnswers).length > 0 && isEditing && (
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={saveReflections}
+                        className="flex items-center gap-2"
+                      >
+                        <Save className="w-4 h-4" />
+                        Save Reflections
+                      </Button>
+                    )}
+                  </div>
                 </div>
                 <div className="space-y-4">
                   {exercise.reflection_prompts.map((prompt, index) => (
@@ -349,11 +478,12 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey }: DailyExerc
                         value={reflectionAnswers[index] || ''}
                         onChange={(e) => handleReflectionChange(index, e.target.value)}
                         className="min-h-[80px] resize-none"
+                        disabled={isDayCompleted && !isEditing}
                       />
                     </div>
                   ))}
                 </div>
-                {Object.keys(reflectionAnswers).length > 0 && (
+                {Object.keys(reflectionAnswers).length > 0 && isEditing && (
                   <div className="mt-4 pt-4 border-t">
                     <Button
                       onClick={saveReflections}
@@ -455,6 +585,33 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey }: DailyExerc
           )}
         </CardContent>
       </Card>
+      
+      
+      {/* Progress Indicator for exercises with questions */}
+      {!isDayCompleted && ((exercise.questions && exercise.questions.length > 0) || (exercise.reflection_prompts && exercise.reflection_prompts.length > 0)) && (
+        <Card>
+          <CardContent className="pt-6">
+            <div className="text-center space-y-3">
+              <h3 className="font-semibold text-lg">Progress</h3>
+              <p className="text-sm text-muted-foreground">
+                Answer all questions and save your responses to automatically complete this day.
+              </p>
+              <div className="flex items-center gap-2 justify-center text-sm text-muted-foreground">
+                {exercise.questions && exercise.questions.length > 0 && (
+                  <span>
+                    Questions: {Object.keys(questionAnswers).filter(key => questionAnswers[parseInt(key)]?.trim().length > 0).length}/{exercise.questions.length}
+                  </span>
+                )}
+                {exercise.reflection_prompts && exercise.reflection_prompts.length > 0 && (
+                  <span>
+                    Reflections: {Object.keys(reflectionAnswers).filter(key => reflectionAnswers[parseInt(key)]?.trim().length > 0).length}/{exercise.reflection_prompts.length}
+                  </span>
+                )}
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
     </div>
   );
 };
