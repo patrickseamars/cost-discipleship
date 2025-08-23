@@ -262,7 +262,7 @@ export const SectionOverview = ({ section }: SectionOverviewProps) => {
           <CardContent className="space-y-4">
             <div className="flex justify-center">
               <img 
-                src="/circlesOfHealth.png" 
+                src={`${import.meta.env.PROD ? '/cost-discipleship' : ''}/circlesOfHealth.png`}
                 alt="3 Circles of Health - Mental, Emotional, Physical, and Spiritual"
                 className="max-w-full h-auto rounded-lg"
                 style={{ maxHeight: '400px' }}
