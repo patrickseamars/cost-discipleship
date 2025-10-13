@@ -4,7 +4,7 @@ import { DevotionalTab } from "@/components/DevotionalTab";
 import { HabitsTab } from "@/components/HabitsTab";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Palette } from "lucide-react";
 
 const Index = () => {
 	const [activeTab, setActiveTab] = useState<"devotional" | "habits">(
@@ -31,12 +31,20 @@ const Index = () => {
 					<p className="text-sm opacity-90 tracking-wide uppercase text-xs">
 						Multiplying followers of Jesus for lasting impact
 					</p>
-					<Link to="/sections">
-						<Button variant="secondary" size="sm" className="mt-3">
-							Explore Training Sections
-							<ArrowRight className="w-4 h-4 ml-1" />
-						</Button>
-					</Link>
+					<div className="flex flex-col sm:flex-row gap-2 mt-3">
+						<Link to="/sections">
+							<Button variant="secondary" size="sm">
+								Explore Training Sections
+								<ArrowRight className="w-4 h-4 ml-1" />
+							</Button>
+						</Link>
+						<Link to="/mockups">
+							<Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
+								<Palette className="w-4 h-4 mr-1" />
+								UI Mockups
+							</Button>
+						</Link>
+					</div>
 				</div>
 			</div>
 
