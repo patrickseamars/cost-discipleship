@@ -161,7 +161,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 🙏 Acknowledgments
 
-- Built with [Lovable](https://lovable.dev) - AI-powered web development
 - UI components from [shadcn/ui](https://ui.shadcn.com/)
 - Icons from [Lucide React](https://lucide.dev/)
 - Styled with [Tailwind CSS](https://tailwindcss.com/)
