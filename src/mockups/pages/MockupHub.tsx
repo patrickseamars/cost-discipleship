@@ -18,8 +18,8 @@ const MockupHub = () => {
     {
       id: "layout-v2", 
       title: "Layout Variant 2",
-      description: "Minimalist design with focus on content readability",
-      status: "draft",
+      description: "Minimalist Medium/GitBook style with sidebar navigation",
+      status: "active",
       path: "/mockups/layout-v2", 
       icon: Layout,
       color: "bg-green-500"

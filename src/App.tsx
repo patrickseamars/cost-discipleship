@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound";
 import MockupHub from "./mockups/pages/MockupHub";
 import DesignPlayground from "./mockups/pages/DesignPlayground";
 import LayoutVariant1 from "./mockups/variants/LayoutVariant1";
+import LayoutVariant2 from "./mockups/variants/LayoutVariant2";
 import ColorVariant1 from "./mockups/variants/ColorVariant1";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/mockups" element={<MockupHub />} />
           <Route path="/mockups/playground" element={<DesignPlayground />} />
           <Route path="/mockups/layout-v1" element={<LayoutVariant1 />} />
+          <Route path="/mockups/layout-v2" element={<LayoutVariant2 />} />
           <Route path="/mockups/color-v1" element={<ColorVariant1 />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
