@@ -34,8 +34,6 @@ const SectionDemo = () => {
       setOverviewData(sectionOverviewsData.sections[sectionKey]);
       setExerciseData(dailyExercisesData.sections[sectionKey]);
       setSummaryData(sectionSummariesData.sections[sectionKey]);
-      
-      console.log('Loaded overview data for', sectionKey, ':', sectionOverviewsData.sections[sectionKey]);
     } catch (error) {
       console.error('Error loading section data:', error);
     } finally {
