@@ -25,6 +25,15 @@ const MockupHub = () => {
       color: "bg-green-500"
     },
     {
+      id: "layout-v2-enhanced", 
+      title: "Layout V2 - Full Featured",
+      description: "Complete implementation with all features for Relationship & Rhythm sections",
+      status: "active",
+      path: "/mockups/layout-v2-enhanced", 
+      icon: Layout,
+      color: "bg-emerald-600"
+    },
+    {
       id: "color-v1",
       title: "Color Scheme A",
       description: "Warm earth tones for a welcoming, spiritual feel",

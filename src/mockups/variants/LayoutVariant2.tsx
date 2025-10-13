@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Textarea } from "@/components/ui/textarea";
 import { 
   ArrowLeft, 
   Menu,
@@ -19,25 +20,51 @@ import {
   Book,
   Target,
   Clock,
-  TrendingUp
+  TrendingUp,
+  Save,
+  Edit3,
+  Quote,
+  Star,
+  HelpCircle,
+  AlertCircle
 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { Toaster } from "@/components/ui/toaster";
 
 // Import the actual data
 import dailyExercisesData from "@/data/daily-exercises.json";
 import sectionOverviewsData from "@/data/section-overviews.json";
+import sectionSummariesData from "@/data/section-summaries.json";
+import { assessmentStorage } from "@/lib/assessmentStorage";
+import { completionStorage } from "@/lib/completionStorage";
+
+// Assessment types
+interface AssessmentResults {
+  totalScore: number;
+  averageScore: number;
+  maxPossibleScore: number;
+  percentageScore: number;
+  strongestAreas: { text: string; rating: number }[];
+  weakestAreas: { text: string; rating: number }[];
+  completedItems: number;
+  totalItems: number;
+  ratings: { [key: number]: number };
+  reflectionAnswers: { [key: number]: string };
+}
 
 const LayoutVariant2 = () => {
+  const { toast } = useToast();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [currentView, setCurrentView] = useState("dashboard");
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
     relationship: true // Start with first section expanded
   });
 
-  // Mock data for progress tracking
-  const [completedDays, setCompletedDays] = useState(new Set([
-    "relationship-1", "relationship-2", "relationship-3",
-    "rhythm-1", "rhythm-2"
-  ]));
+  // State for daily exercise interactions
+  const [reflectionAnswers, setReflectionAnswers] = useState<{ [key: string]: { [key: number]: string } }>({});
+  const [questionAnswers, setQuestionAnswers] = useState<{ [key: string]: { [key: number]: string } }>({});
+  const [assessmentRatings, setAssessmentRatings] = useState<{ [key: string]: { [key: number]: number } }>({});
+  const [isEditing, setIsEditing] = useState<{ [key: string]: boolean }>({});
 
   const sections = [
     { key: "relationship", name: "Relationship", totalDays: 6 },
@@ -59,28 +86,26 @@ const LayoutVariant2 = () => {
   };
 
   const getSectionProgress = (sectionKey: string, totalDays: number) => {
-    const completed = Array.from(completedDays).filter(day => 
-      day.startsWith(sectionKey)
-    ).length;
-    return Math.round((completed / totalDays) * 100);
+    return completionStorage.getCompletionPercentage(sectionKey, totalDays);
   };
 
   const getTotalProgress = () => {
     const totalDays = sections.length * 6; // 54 total days
-    return Math.round((completedDays.size / totalDays) * 100);
+    const allCompletions = completionStorage.getAllCompletions();
+    const totalCompleted = Object.values(allCompletions).reduce((sum, days) => sum + days.length, 0);
+    return Math.round((totalCompleted / totalDays) * 100);
   };
 
   const getCurrentDayData = () => {
     // Find the next incomplete day
     for (const section of sections) {
       for (let day = 1; day <= section.totalDays; day++) {
-        const dayId = `${section.key}-${day}`;
-        if (!completedDays.has(dayId)) {
+        if (!completionStorage.isDayComplete(section.key, day)) {
           return {
             sectionKey: section.key,
             sectionName: section.name,
             day,
-            dayId,
+            dayId: `${section.key}-${day}`,
             data: dailyExercisesData.sections[section.key]?.daily_exercises?.find(ex => ex.day === day)
           };
         }
@@ -172,10 +197,25 @@ const LayoutVariant2 = () => {
                   
                   {isExpanded && (
                     <div className="ml-6 space-y-1">
+                      {/* Overview and Summary */}
+                      <Button
+                        variant={currentView === `${section.key}-overview` ? "secondary" : "ghost"}
+                        size="sm"
+                        className="w-full justify-start text-xs pl-8"
+                        onClick={() => {
+                          setCurrentView(`${section.key}-overview`);
+                          setSidebarOpen(false);
+                        }}
+                      >
+                        <Target className="w-3 h-3 mr-2 text-blue-600" />
+                        Overview
+                      </Button>
+                      
+                      {/* Daily Exercises */}
                       {Array.from({ length: section.totalDays }, (_, i) => {
                         const day = i + 1;
                         const dayId = `${section.key}-${day}`;
-                        const isCompleted = completedDays.has(dayId);
+                        const isCompleted = completionStorage.isDayComplete(section.key, day);
                         const isActive = currentView === dayId;
                         
                         return (
@@ -198,6 +238,19 @@ const LayoutVariant2 = () => {
                           </Button>
                         );
                       })}
+                      
+                      <Button
+                        variant={currentView === `${section.key}-summary` ? "secondary" : "ghost"}
+                        size="sm"
+                        className="w-full justify-start text-xs pl-8"
+                        onClick={() => {
+                          setCurrentView(`${section.key}-summary`);
+                          setSidebarOpen(false);
+                        }}
+                      >
+                        <TrendingUp className="w-3 h-3 mr-2 text-green-600" />
+                        Summary
+                      </Button>
                     </div>
                   )}
                 </div>
@@ -264,11 +317,11 @@ const LayoutVariant2 = () => {
             
             <div className="grid grid-cols-2 gap-4 pt-2">
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">{completedDays.size}</div>
+                <div className="text-2xl font-bold text-gray-900">{Object.values(completionStorage.getAllCompletions()).reduce((sum, days) => sum + days.length, 0)}</div>
                 <div className="text-xs text-gray-500">Days Completed</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">{54 - completedDays.size}</div>
+                <div className="text-2xl font-bold text-gray-900">{54 - Object.values(completionStorage.getAllCompletions()).reduce((sum, days) => sum + days.length, 0)}</div>
                 <div className="text-xs text-gray-500">Days Remaining</div>
               </div>
             </div>
@@ -494,11 +547,11 @@ const LayoutVariant2 = () => {
             <Button 
               className="bg-blue-600 hover:bg-blue-700"
               onClick={() => {
-                setCompletedDays(prev => new Set([...prev, dayId]));
+                completionStorage.markDayComplete(sectionKey, dayNum);
               }}
-              disabled={completedDays.has(dayId)}
+              disabled={completionStorage.isDayComplete(sectionKey, dayNum)}
             >
-              {completedDays.has(dayId) ? (
+              {completionStorage.isDayComplete(sectionKey, dayNum) ? (
                 <>
                   <CheckCircle2 className="w-4 h-4 mr-2" />
                   Completed
@@ -509,6 +562,236 @@ const LayoutVariant2 = () => {
             </Button>
           </div>
         </div>
+      </div>
+    );
+  };
+
+  const OverviewView = (viewId: string) => {
+    const sectionKey = viewId.replace('-overview', '');
+    const sectionData = sectionOverviewsData.sections[sectionKey];
+    
+    if (!sectionData) {
+      return (
+        <div className="max-w-4xl mx-auto">
+          <Card>
+            <CardContent className="p-8">
+              <p className="text-gray-500">Overview data not found for this section.</p>
+            </CardContent>
+          </Card>
+        </div>
+      );
+    }
+
+    return (
+      <div className="max-w-4xl mx-auto space-y-8">
+        <div className="space-y-2">
+          <h1 className="text-3xl font-bold text-gray-900">{sectionData.title}</h1>
+          <p className="text-lg text-blue-600 font-medium">{sectionData.core_habit}</p>
+        </div>
+
+        {/* Overview Content */}
+        {sectionData.overview && (
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Target className="w-5 h-5 text-blue-600" />
+                Section Overview
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-700 leading-relaxed">{sectionData.overview}</p>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Implementation Details */}
+        {sectionData.implementation && (
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Clock className="w-5 h-5 text-green-600" />
+                Implementation
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-700 leading-relaxed">{sectionData.implementation}</p>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* SOAP Method (for Relationship section) */}
+        {sectionData.soap_method && (
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Book className="w-5 h-5 text-purple-600" />
+                SOAP Method
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-gray-700 leading-relaxed">{sectionData.soap_method.description}</p>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="p-4 bg-blue-50 rounded-lg">
+                  <h4 className="font-semibold text-blue-900 mb-2">S - {sectionData.soap_method.S}</h4>
+                </div>
+                <div className="p-4 bg-green-50 rounded-lg">
+                  <h4 className="font-semibold text-green-900 mb-2">O - {sectionData.soap_method.O}</h4>
+                </div>
+                <div className="p-4 bg-yellow-50 rounded-lg">
+                  <h4 className="font-semibold text-yellow-900 mb-2">A - {sectionData.soap_method.A}</h4>
+                </div>
+                <div className="p-4 bg-purple-50 rounded-lg">
+                  <h4 className="font-semibold text-purple-900 mb-2">P - {sectionData.soap_method.P}</h4>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Meeting Discussion */}
+        {sectionData.meeting && (
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <HelpCircle className="w-5 h-5 text-orange-600" />
+                {sectionData.meeting.title}
+              </CardTitle>
+              {sectionData.meeting.scripture && (
+                <CardDescription className="text-base font-medium text-blue-600">
+                  Scripture: {sectionData.meeting.scripture}
+                </CardDescription>
+              )}
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {sectionData.meeting.introduction && (
+                <p className="text-gray-700 leading-relaxed bg-gray-50 p-4 rounded-lg border-l-4 border-blue-200">
+                  {sectionData.meeting.introduction}
+                </p>
+              )}
+              
+              {sectionData.meeting.key_concepts && (
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-3">Key Concepts:</h4>
+                  <ul className="space-y-2">
+                    {sectionData.meeting.key_concepts.map((concept, index) => (
+                      <li key={index} className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">{concept}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              
+              {sectionData.meeting.discussion_points && (
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-3">Discussion Questions:</h4>
+                  <div className="space-y-3">
+                    {sectionData.meeting.discussion_points.map((question, index) => (
+                      <div key={index} className="p-3 bg-yellow-50 rounded-lg border-l-4 border-yellow-300">
+                        <p className="text-gray-800">{index + 1}. {question}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        )}
+      </div>
+    );
+  };
+
+  const SummaryView = (viewId: string) => {
+    const sectionKey = viewId.replace('-summary', '');
+    const sectionData = sectionSummariesData.sections[sectionKey];
+    
+    if (!sectionData) {
+      return (
+        <div className="max-w-4xl mx-auto">
+          <Card>
+            <CardContent className="p-8">
+              <p className="text-gray-500">Summary data not found for this section.</p>
+            </CardContent>
+          </Card>
+        </div>
+      );
+    }
+
+    return (
+      <div className="max-w-4xl mx-auto space-y-8">
+        <div className="space-y-2">
+          <h1 className="text-3xl font-bold text-gray-900">{sectionData.title} - Summary</h1>
+          <p className="text-lg text-green-600 font-medium">{sectionData.core_habit}</p>
+        </div>
+
+        {/* Introduction */}
+        {sectionData.summary?.introduction && (
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <TrendingUp className="w-5 h-5 text-green-600" />
+                Section Summary
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-700 leading-relaxed">{sectionData.summary.introduction}</p>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Key Thoughts */}
+        {sectionData.summary?.key_thoughts && (
+          <Card>
+            <CardHeader>
+              <CardTitle>Key Thoughts</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-4">
+                {sectionData.summary.key_thoughts.map((thought, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <Star className="w-4 h-4 text-yellow-500 mt-1 flex-shrink-0" />
+                    <p className="text-gray-700">{thought}</p>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Identity Statement */}
+        {sectionData.summary?.identity_statement && (
+          <Card className="border-2 border-blue-200 bg-blue-50">
+            <CardHeader>
+              <CardTitle className="text-blue-900">Identity Statement</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-lg font-medium text-blue-800">{sectionData.summary.identity_statement}</p>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Habit Tracker */}
+        {sectionData.summary?.habit_tracker_items && (
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-green-600" />
+                Habit Tracker
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-2">
+                {sectionData.summary.habit_tracker_items.map((item, index) => (
+                  <div key={index} className="flex items-center gap-3 p-2 rounded hover:bg-gray-50">
+                    <div className="w-4 h-4 rounded border border-gray-300" />
+                    <span className="text-gray-700">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        )}
       </div>
     );
   };
@@ -571,7 +854,9 @@ const LayoutVariant2 = () => {
           <div className="p-6 sm:p-8">
             {currentView === "dashboard" && <DashboardView />}
             {currentView === "assessments" && <AssessmentsView />}
-            {currentView.includes("-") && DayView(currentView)}
+            {currentView.includes("-overview") && OverviewView(currentView)}
+            {currentView.includes("-summary") && SummaryView(currentView)}
+            {currentView.includes("-") && !currentView.includes("-overview") && !currentView.includes("-summary") && DayView(currentView)}
           </div>
         </div>
       </div>
