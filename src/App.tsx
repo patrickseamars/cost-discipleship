@@ -24,8 +24,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter basename={import.meta.env.PROD ? '/cost-discipleship' : ''}>
         <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/sections" element={<SectionsLayout />} />
+          <Route path="/" element={<SectionsLayout />} />
+          <Route path="/legacy" element={<Index />} />
           
           {/* Mockup Routes */}
           <Route path="/mockups" element={<MockupHub />} />
