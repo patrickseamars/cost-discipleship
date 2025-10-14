@@ -34,12 +34,16 @@ const Index = () => {
 					<div className="flex flex-col sm:flex-row gap-2 mt-3">
 						<Link to="/sections">
 							<Button variant="secondary" size="sm">
-								Explore Training Sections
+								Explore Discipleship Sections
 								<ArrowRight className="w-4 h-4 ml-1" />
 							</Button>
 						</Link>
 						<Link to="/mockups">
-							<Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
+							<Button
+								variant="outline"
+								size="sm"
+								className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+							>
 								<Palette className="w-4 h-4 mr-1" />
 								UI Mockups
 							</Button>

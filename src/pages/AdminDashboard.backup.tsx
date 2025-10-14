@@ -307,7 +307,7 @@ export default function AdminDashboard() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-gray-900">System Overview</h2>
-          <p className="text-gray-600">Monitor your COST Training platform</p>
+          <p className="text-gray-600">Monitor your COST Discipleship platform</p>
         </div>
         <Button 
           onClick={fetchAnalytics} 
@@ -660,7 +660,7 @@ export default function AdminDashboard() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-gray-900">Group Management</h2>
-          <p className="text-gray-600">Create and manage training groups</p>
+          <p className="text-gray-600">Create and manage Discipleship groups</p>
         </div>
         <div className="flex gap-2">
           <Button onClick={fetchGroups} variant="outline" className="flex items-center gap-2">
@@ -693,7 +693,7 @@ export default function AdminDashboard() {
             <div className="p-8 text-center">
               <UserCog className="w-12 h-12 text-gray-400 mx-auto mb-4" />
               <p className="text-gray-500 text-lg font-medium">No groups found</p>
-              <p className="text-gray-400 text-sm">Create your first training group to get started</p>
+              <p className="text-gray-400 text-sm">Create your first Discipleship group to get started</p>
             </div>
           ) : (
             <Table>
