@@ -1,4 +1,4 @@
--- COST Training Multi-User Database Schema
+-- COST Discipleship Multi-User Database Schema
 -- Initial Migration: Authentication, Users, Groups, and Data Storage
 
 -- Enable UUID extension

@@ -1,6 +1,6 @@
-# COST Discipleship Training Platform
+# COST Discipleship Platform
 
-A comprehensive web application for Christian discipleship training based on the COST program (Connect, Obey, Share, Train). This platform provides structured weekly training with assessments, daily exercises, reflection questions, progress tracking, and role-based dashboards for administration and group leadership.
+A comprehensive web application for Christian discipleship based on the COST program (Connect, Obey, Share, Train). This platform provides structured weekly with assessments, daily exercises, reflection questions, progress tracking, and role-based dashboards for administration and group leadership.
 
 ## 🌟 Live Demo
 
@@ -9,11 +9,13 @@ A comprehensive web application for Christian discipleship training based on the
 ## ✨ Features
 
 ### 👥 **Multi-Role Dashboard System**
+
 - **🔧 Admin Dashboard**: Complete user and group management with CRUD operations
 - **👑 Group Leader Dashboard**: Manage group members, track progress, and view analytics
 - **📊 User Dashboard**: Personal progress tracking and learning interface
 
 ### 🎯 **Core Learning Features**
+
 - **🌐 Landing Page**: Comprehensive overview of COST principles and 9 essential habits
 - **📊 Interactive Assessments**: Self-evaluation tools with progress tracking
 - **📝 Daily Exercises**: Scripture study, practical exercises, and reflection questions
@@ -22,12 +24,14 @@ A comprehensive web application for Christian discipleship training based on the
 - **🎯 Section Navigation**: Browse through different habit-building sections
 
 ### 🛡️ **Security & Authentication**
+
 - **🔐 Supabase Auth**: Secure user authentication and authorization
 - **🛡️ Row Level Security (RLS)**: Database-level security policies
 - **👤 Profile Management**: Complete user profile setup and management
 - **🔑 Role-Based Access Control**: Different permissions for users, group leaders, and admins
 
 ### 🎨 **Modern User Experience**
+
 - **🎯 Beautiful Landing Page**: Engaging introduction to COST discipleship principles
 - **📱 Responsive Design**: Works seamlessly on desktop and mobile devices
 - **🎨 Modern UI**: Clean, accessible interface built with shadcn/ui components
@@ -65,6 +69,7 @@ yarn install
 #### 3. Set Up Supabase Project
 
 1. **Create a new Supabase project:**
+
    - Go to [supabase.com](https://supabase.com)
    - Click "New Project"
    - Choose your organization and create the project
@@ -104,6 +109,7 @@ supabase db push
 ```
 
 **Alternatively, you can run the SQL manually:**
+
 1. Go to your Supabase dashboard → SQL Editor
 2. Run the migrations in `supabase/migrations/` in order
 3. Run `promote_admin.sql` to make yourself an admin user (after creating your account)
@@ -120,12 +126,12 @@ The app will be available at `http://localhost:5173`
 
 ### 📝 Available Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
+| Command           | Description              |
+| ----------------- | ------------------------ |
+| `npm run dev`     | Start development server |
+| `npm run build`   | Build for production     |
 | `npm run preview` | Preview production build |
-| `npm run lint` | Run ESLint |
+| `npm run lint`    | Run ESLint               |
 
 ### 📊 First Time Setup
 
@@ -143,6 +149,7 @@ The app will be available at `http://localhost:5173`
 This project is deployed on **Netlify** with automatic deployments from the main branch.
 
 ### **Current Deployment**
+
 - **Live URL**: [https://cost-discipleship.netlify.app](https://cost-discipleship.netlify.app)
 - **Auto-deploy**: Enabled on push to `main` branch
 - **Build command**: `npm run build`
@@ -151,6 +158,7 @@ This project is deployed on **Netlify** with automatic deployments from the main
 ### **Deploy Your Own Instance**
 
 #### **Option 1: Netlify (Recommended)**
+
 1. **Fork this repository**
 2. **Sign up at [netlify.com](https://netlify.com)**
 3. **Connect your GitHub account**
@@ -168,6 +176,7 @@ This project is deployed on **Netlify** with automatic deployments from the main
 7. **Deploy!**
 
 #### **Option 2: Vercel**
+
 ```bash
 npm install -g vercel
 vercel
@@ -175,6 +184,7 @@ vercel
 ```
 
 #### **Option 3: Manual Build**
+
 ```bash
 # Build for production
 npm run build
@@ -185,6 +195,7 @@ npm run build
 ## 🛠️ Tech Stack
 
 ### **Frontend**
+
 - **⚡ Vite** - Lightning fast build tool and dev server
 - **⚛️ React 18** - UI framework with hooks and modern patterns
 - **🏷️ TypeScript** - Type-safe JavaScript for better DX
@@ -196,6 +207,7 @@ npm run build
 - **📈 Recharts** - Chart library for analytics
 
 ### **Backend & Database**
+
 - **🛡️ Supabase** - Backend-as-a-Service with PostgreSQL
 - **🔐 Supabase Auth** - User authentication and authorization
 - **💾 PostgreSQL** - Relational database with real-time features
@@ -203,6 +215,7 @@ npm run build
 - **🔄 Real-time subscriptions** - Live data updates
 
 ### **Development & Deployment**
+
 - **😫 ESLint** - Code linting and quality
 - **🌐 Netlify** - Modern web deployment platform
 - **🔄 Auto-deploy** - Automatic deployments from Git
@@ -326,6 +339,7 @@ cost-discipleship/
 ### Common Issues
 
 #### **Database Connection Issues**
+
 ```bash
 # Error: Invalid API key or project URL
 # Solution: Check your .env file
@@ -333,6 +347,7 @@ cat .env  # Verify VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY
 ```
 
 #### **RLS Policy Errors**
+
 ```sql
 -- If you see "RLS policy violation" errors:
 -- 1. Make sure you're signed in
@@ -344,6 +359,7 @@ UPDATE profiles SET role = 'admin' WHERE email = 'your-email@example.com';
 ```
 
 #### **Migration Issues**
+
 ```bash
 # If migrations fail:
 # 1. Reset the database (WARNING: This deletes all data)
@@ -354,6 +370,7 @@ supabase db reset
 ```
 
 #### **Development Server Issues**
+
 ```bash
 # Port already in use:
 npm run dev -- --port 3000
@@ -364,6 +381,7 @@ npm install
 ```
 
 #### **Authentication Issues**
+
 ```bash
 # Clear browser data if auth is stuck:
 # 1. Open Developer Tools → Application → Storage
@@ -386,16 +404,16 @@ npm install
 SELECT id, email, first_name, last_name, role, group_id FROM profiles;
 
 -- Check all groups and their leaders
-SELECT g.*, p.first_name, p.last_name 
-FROM groups g 
+SELECT g.*, p.first_name, p.last_name
+FROM groups g
 LEFT JOIN profiles p ON g.leader_id = p.id;
 
 -- Check user progress data
 SELECT * FROM user_progress WHERE user_id = 'your-user-id';
 
 -- View all RLS policies
-SELECT schemaname, tablename, policyname, permissive, roles, cmd, qual 
-FROM pg_policies 
+SELECT schemaname, tablename, policyname, permissive, roles, cmd, qual
+FROM pg_policies
 WHERE schemaname = 'public';
 ```
 
