@@ -4,7 +4,7 @@ A comprehensive web application for Christian discipleship training based on the
 
 ## 🌟 Live Demo
 
-**🌐 Visit the live app:** [https://patrickseamars.github.io/cost-discipleship/](https://patrickseamars.github.io/cost-discipleship/)
+**🌐 Visit the live app:** [https://cost-discipleship.netlify.app](https://cost-discipleship.netlify.app)
 
 ## ✨ Features
 
@@ -123,7 +123,6 @@ The app will be available at `http://localhost:5173`
 | `npm run build` | Build for production |
 | `npm run preview` | Preview production build |
 | `npm run lint` | Run ESLint |
-| `npm run deploy` | Deploy to GitHub Pages |
 
 ### 📊 First Time Setup
 
@@ -138,56 +137,47 @@ The app will be available at `http://localhost:5173`
 
 ## 🚀 Deployment
 
-### Deploy to GitHub Pages
+This project is deployed on **Netlify** with automatic deployments from the main branch.
 
-This project is configured for easy deployment to GitHub Pages:
+### **Current Deployment**
+- **Live URL**: [https://cost-discipleship.netlify.app](https://cost-discipleship.netlify.app)
+- **Auto-deploy**: Enabled on push to `main` branch
+- **Build command**: `npm run build`
+- **Publish directory**: `dist`
 
+### **Deploy Your Own Instance**
+
+#### **Option 1: Netlify (Recommended)**
+1. **Fork this repository**
+2. **Sign up at [netlify.com](https://netlify.com)**
+3. **Connect your GitHub account**
+4. **Import your forked repository**
+5. **Configure build settings:**
+   ```
+   Build command: npm run build
+   Publish directory: dist
+   ```
+6. **Add environment variables:**
+   ```
+   VITE_SUPABASE_URL = https://your-project-id.supabase.co
+   VITE_SUPABASE_ANON_KEY = your-anon-key-here
+   ```
+7. **Deploy!**
+
+#### **Option 2: Vercel**
 ```bash
-# Deploy to GitHub Pages (builds and deploys automatically)
-npm run deploy
+npm install -g vercel
+vercel
+# Follow prompts and add environment variables in dashboard
 ```
 
-**What happens when you run `npm run deploy`:**
-1. Builds the project for production
-2. Creates/updates the `gh-pages` branch
-3. Deploys the built files to GitHub Pages
-4. Your site will be live at `https://yourusername.github.io/repository-name/`
-
-### Manual Deployment Steps
-
-If you want to deploy manually or to a different hosting provider:
-
+#### **Option 3: Manual Build**
 ```bash
-# 1. Build for production
+# Build for production
 npm run build
 
-# 2. The built files will be in the 'dist' directory
-# Upload the contents of 'dist' to your hosting provider
+# Upload 'dist' folder contents to your hosting provider
 ```
-
-### First-Time GitHub Pages Setup
-
-If you fork this repository or want to set up deployment from scratch:
-
-1. **Fork/Clone the repository**
-2. **Update package.json**:
-   ```json
-   {
-     "homepage": "https://yourusername.github.io/your-repo-name"
-   }
-   ```
-3. **Update vite.config.ts**:
-   ```typescript
-   base: mode === 'production' ? '/your-repo-name/' : '/'
-   ```
-4. **Install gh-pages**:
-   ```bash
-   npm install --save-dev gh-pages
-   ```
-5. **Deploy**:
-   ```bash
-   npm run deploy
-   ```
 
 ## 🛠️ Tech Stack
 
@@ -210,9 +200,9 @@ If you fork this repository or want to set up deployment from scratch:
 - **🔄 Real-time subscriptions** - Live data updates
 
 ### **Development & Deployment**
-- **🚫 ESLint** - Code linting and quality
-- **💫 GitHub Actions** - CI/CD pipeline
-- **🔄 GitHub Pages** - Static site hosting
+- **😫 ESLint** - Code linting and quality
+- **🌐 Netlify** - Modern web deployment platform
+- **🔄 Auto-deploy** - Automatic deployments from Git
 
 ## 🗺️ Database Schema
 
