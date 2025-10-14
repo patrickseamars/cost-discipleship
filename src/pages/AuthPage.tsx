@@ -23,7 +23,7 @@ export default function AuthPage() {
 
   // Redirect if already authenticated
   if (user) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/app" replace />;
   }
 
   const handleAuthSuccess = () => {

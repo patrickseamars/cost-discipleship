@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import LandingPage from "./pages/LandingPage";
 import AuthPage from "./pages/AuthPage";
 import AdminDashboard from "./pages/AdminDashboard";
 import GroupLeaderDashboard from "./pages/GroupLeaderDashboard";
@@ -30,11 +31,14 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
+            {/* Public landing page */}
+            <Route path="/" element={<LandingPage />} />
+            
             {/* Authentication route */}
             <Route path="/auth" element={<AuthPage />} />
             
             {/* Protected main application */}
-            <Route path="/" element={
+            <Route path="/app" element={
               <ProtectedRoute>
                 <SectionsLayout />
               </ProtectedRoute>

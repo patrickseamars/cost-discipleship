@@ -14,6 +14,7 @@ A comprehensive web application for Christian discipleship training based on the
 - **📊 User Dashboard**: Personal progress tracking and learning interface
 
 ### 🎯 **Core Learning Features**
+- **🌐 Landing Page**: Comprehensive overview of COST principles and 9 essential habits
 - **📊 Interactive Assessments**: Self-evaluation tools with progress tracking
 - **📝 Daily Exercises**: Scripture study, practical exercises, and reflection questions
 - **💾 Data Persistence**: Progress saved to Supabase database with real-time sync
@@ -27,9 +28,11 @@ A comprehensive web application for Christian discipleship training based on the
 - **🔑 Role-Based Access Control**: Different permissions for users, group leaders, and admins
 
 ### 🎨 **Modern User Experience**
+- **🎯 Beautiful Landing Page**: Engaging introduction to COST discipleship principles
 - **📱 Responsive Design**: Works seamlessly on desktop and mobile devices
 - **🎨 Modern UI**: Clean, accessible interface built with shadcn/ui components
 - **⚡ Fast Performance**: Built with Vite and optimized for speed
+- **🔗 Smooth Navigation**: Smart scroll-to-section functionality
 
 ## 🚀 Getting Started
 
