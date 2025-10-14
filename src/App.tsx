@@ -28,7 +28,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter basename={import.meta.env.PROD ? '/cost-discipleship' : ''}>
+        <BrowserRouter>
           <Routes>
             {/* Authentication route */}
             <Route path="/auth" element={<AuthPage />} />
