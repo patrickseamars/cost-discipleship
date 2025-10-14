@@ -28,8 +28,6 @@ import {
   AlertCircle,
   Award
 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import { Toaster } from "@/components/ui/toaster";
 
 // Import the actual data
 import dailyExercisesData from "@/data/daily-exercises.json";
@@ -53,7 +51,6 @@ interface AssessmentResults {
 }
 
 const LayoutVariant2Enhanced = () => {
-  const { toast } = useToast();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [currentView, setCurrentView] = useState("dashboard");
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
@@ -195,11 +192,6 @@ const LayoutVariant2Enhanced = () => {
     if (reflectionAnswers[dayId] && Object.keys(reflectionAnswers[dayId]).length > 0) {
       const storageKey = `reflections_${sectionKey}_day${dayNum}`;
       localStorage.setItem(storageKey, JSON.stringify(reflectionAnswers[dayId]));
-      
-      toast({
-        title: "Reflections Saved! ✍️",
-        description: "Your reflection responses have been saved.",
-      });
     }
   };
 
@@ -210,11 +202,6 @@ const LayoutVariant2Enhanced = () => {
     if (questionAnswers[dayId] && Object.keys(questionAnswers[dayId]).length > 0) {
       const storageKey = `questions_${sectionKey}_day${dayNum}`;
       localStorage.setItem(storageKey, JSON.stringify(questionAnswers[dayId]));
-      
-      toast({
-        title: "Answers Saved! ✍️",
-        description: "Your question responses have been saved.",
-      });
     }
   };
 
@@ -224,11 +211,6 @@ const LayoutVariant2Enhanced = () => {
     
     completionStorage.markDayComplete(sectionKey, dayNum);
     setIsEditing(prev => ({ ...prev, [dayId]: false }));
-    
-    toast({
-      title: "Day Completed! 🎉",
-      description: `Great job! Day ${dayNum} has been marked as complete.`,
-    });
   };
 
   const calculateAssessmentResults = (dayId: string, evaluationItems: string[]): AssessmentResults => {
@@ -272,11 +254,6 @@ const LayoutVariant2Enhanced = () => {
     
     // Mark day as complete
     markDayComplete(dayId);
-    
-    toast({
-      title: "Assessment Completed! 📊",
-      description: `Your ${assessmentType} assessment has been saved with a score of ${Math.round(results.percentageScore)}%.`,
-    });
   };
 
   const Sidebar = () => (
@@ -973,7 +950,6 @@ const LayoutVariant2Enhanced = () => {
 
     return (
       <div className="max-w-4xl mx-auto space-y-8">
-        <Toaster />
         
         {/* Header */}
         <div className="space-y-2">

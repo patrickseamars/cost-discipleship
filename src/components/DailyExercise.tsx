@@ -9,7 +9,6 @@ import { InteractiveAssessment } from "./InteractiveAssessment";
 import { CompletedAssessment } from "./CompletedAssessment";
 import { assessmentStorage } from "@/lib/assessmentStorage";
 import { completionStorage } from "@/lib/completionStorage";
-import { useToast } from "@/hooks/use-toast";
 
 interface DailyExerciseProps {
   exercise: {
@@ -34,7 +33,6 @@ interface DailyExerciseProps {
 }
 
 export const DailyExercise = ({ exercise, sectionTitle, sectionKey, currentDay, totalDays, onPrevDay, onNextDay }: DailyExerciseProps) => {
-  const { toast } = useToast();
   
   // State for reflection answers and question answers
   const [reflectionAnswers, setReflectionAnswers] = useState<{ [key: number]: string }>({});
@@ -128,11 +126,6 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey, currentDay, 
       completionStorage.markDayComplete(sectionKey, exercise.day);
       setIsDayCompleted(true);
       setIsEditing(false);
-      
-      toast({
-        title: "Day Automatically Completed! 🎉",
-        description: `Great job! Day ${exercise.day} has been marked as complete since you've answered all questions.`,
-      });
     }
   };
   
@@ -163,11 +156,6 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey, currentDay, 
       const storageKey = `reflections_${sectionKey}_day${exercise.day}`;
       localStorage.setItem(storageKey, JSON.stringify(reflectionAnswers));
       
-      toast({
-        title: "Reflections Saved! ✍️",
-        description: "Your reflection responses have been saved.",
-      });
-      
       // Exit edit mode after saving
       setIsEditing(false);
       
@@ -182,11 +170,6 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey, currentDay, 
       const storageKey = `questions_${sectionKey}_day${exercise.day}`;
       localStorage.setItem(storageKey, JSON.stringify(questionAnswers));
       
-      toast({
-        title: "Answers Saved! ✍️",
-        description: "Your question responses have been saved.",
-      });
-      
       // Exit edit mode after saving
       setIsEditing(false);
       
@@ -200,11 +183,6 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey, currentDay, 
     if (sectionKey) {
       completionStorage.markDayComplete(sectionKey, exercise.day);
       setIsDayCompleted(true);
-      
-      toast({
-        title: "Day Completed! 🎉",
-        description: `Day ${exercise.day} has been marked as complete.`,
-      });
     }
   };
   
@@ -251,11 +229,6 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey, currentDay, 
               
               // Mark assessment day as complete
               completionStorage.markDayComplete(sectionKey, exercise.day);
-
-              toast({
-                title: "Assessment Updated! 📊",
-                description: "Your assessment has been updated. You can view your results above.",
-              });
             }
           }}
         />
@@ -281,11 +254,6 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey, currentDay, 
               
               // Mark assessment day as complete
               completionStorage.markDayComplete(sectionKey, exercise.day);
-
-              toast({
-                title: "Assessment Saved! 📊",
-                description: "Your initial assessment has been saved. Complete the week to see your progress!",
-              });
             }
           }}
         />

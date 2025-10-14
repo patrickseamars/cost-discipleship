@@ -8,7 +8,6 @@ import { CheckCircle2, TrendingUp, TrendingDown, Minus, Calendar, BarChart3, Tar
 import { InteractiveAssessment } from "./InteractiveAssessment";
 import { AssessmentComparisonChart } from "./AssessmentComparisonChart";
 import { assessmentStorage } from "@/lib/assessmentStorage";
-import { useToast } from "@/hooks/use-toast";
 
 interface WeekReviewAssessmentProps {
   sectionKey: string;
@@ -36,7 +35,6 @@ export const WeekReviewAssessment = ({
     initial: any;
     final: any;
   } | null>(null);
-  const { toast } = useToast();
 
   useEffect(() => {
     loadComparison();
@@ -56,11 +54,6 @@ export const WeekReviewAssessment = ({
       results,
       evaluationItems
     );
-
-    toast({
-      title: "Week Review Complete! 🎉",
-      description: "Your final assessment has been saved and compared with your initial assessment.",
-    });
 
     // Reload comparison data
     loadComparison();

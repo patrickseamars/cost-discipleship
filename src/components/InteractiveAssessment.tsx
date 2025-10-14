@@ -5,7 +5,6 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import { CheckSquare, BarChart3, Target, TrendingUp, AlertCircle, Save } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 
 interface AssessmentItem {
   text: string;

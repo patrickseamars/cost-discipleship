@@ -6,7 +6,6 @@ import { Separator } from "@/components/ui/separator";
 import { CheckSquare, BarChart3, Target, TrendingUp, AlertCircle, RefreshCw, Calendar, Edit3, Save } from "lucide-react";
 import { InteractiveAssessment } from "./InteractiveAssessment";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
 import { assessmentStorage } from "@/lib/assessmentStorage";
 
 interface AssessmentItem {
@@ -53,7 +52,6 @@ export const CompletedAssessment = ({
   reflectionPrompts,
   onComplete
 }: CompletedAssessmentProps) => {
-  const { toast } = useToast();
   const [showRetake, setShowRetake] = useState(false);
   const [isEditingReflections, setIsEditingReflections] = useState(false);
   const [editedReflections, setEditedReflections] = useState<{ [key: number]: string }>({});
@@ -103,11 +101,6 @@ export const CompletedAssessment = ({
     
     setIsEditingReflections(false);
     setEditedReflections({});
-    
-    toast({
-      title: "Reflections Updated! ✍️",
-      description: "Your reflection responses have been updated successfully.",
-    });
   };
   
   // Cancel editing

@@ -34,9 +34,6 @@ import {
 	AlertCircle,
 	Award,
 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import { Toaster } from "@/components/ui/toaster";
-import { useAuth } from "@/contexts/AuthContext";
 
 // Import the actual data
 import dailyExercisesData from "@/data/daily-exercises.json";
@@ -44,6 +41,7 @@ import sectionOverviewsData from "@/data/section-overviews.json";
 import sectionSummariesData from "@/data/section-summaries.json";
 import { assessmentStorage } from "@/lib/assessmentStorage";
 import { completionStorage } from "@/lib/completionStorage";
+import { useAuth } from "@/contexts/AuthContext";
 
 // Assessment types
 interface AssessmentResults {
@@ -60,7 +58,6 @@ interface AssessmentResults {
 }
 
 const SectionsLayout = () => {
-	const { toast } = useToast();
 	const { signOut } = useAuth();
 	const [sidebarOpen, setSidebarOpen] = useState(false);
 	const [currentView, setCurrentView] = useState("dashboard");
@@ -244,10 +241,6 @@ const SectionsLayout = () => {
 				JSON.stringify(reflectionAnswers[dayId])
 			);
 
-			toast({
-				title: "Reflections Saved! ✍️",
-				description: "Your reflection responses have been saved.",
-			});
 		}
 	};
 
@@ -262,10 +255,6 @@ const SectionsLayout = () => {
 			const storageKey = `questions_${sectionKey}_day${dayNum}`;
 			localStorage.setItem(storageKey, JSON.stringify(questionAnswers[dayId]));
 
-			toast({
-				title: "Answers Saved! ✍️",
-				description: "Your question responses have been saved.",
-			});
 		}
 	};
 
@@ -275,11 +264,6 @@ const SectionsLayout = () => {
 
 		completionStorage.markDayComplete(sectionKey, dayNum);
 		setIsEditing((prev) => ({ ...prev, [dayId]: false }));
-
-		toast({
-			title: "Day Completed! 🎉",
-			description: `Great job! Day ${dayNum} has been marked as complete.`,
-		});
 	};
 
 	const calculateAssessmentResults = (
@@ -344,13 +328,6 @@ const SectionsLayout = () => {
 
 		// Mark day as complete
 		markDayComplete(dayId);
-
-		toast({
-			title: "Assessment Completed! 📊",
-			description: `Your ${assessmentType} assessment has been saved with a score of ${Math.round(
-				results.percentageScore
-			)}%.`,
-		});
 
 		// If this was a final assessment, redirect to Week Review to show comparison
 		if (assessmentType === "final") {
@@ -1235,7 +1212,6 @@ const SectionsLayout = () => {
 
 		return (
 			<div className="max-w-4xl mx-auto space-y-8">
-				<Toaster />
 
 				{/* Header */}
 				<div className="space-y-2">
@@ -2104,22 +2080,6 @@ const SectionsLayout = () => {
 									</li>
 								))}
 							</ul>
-						</CardContent>
-					</Card>
-				)}
-
-				{/* Identity Statement */}
-				{sectionData.summary?.identity_statement && (
-					<Card className="border-2 border-blue-200 bg-blue-50">
-						<CardHeader>
-							<CardTitle className="text-blue-900">
-								Identity Statement
-							</CardTitle>
-						</CardHeader>
-						<CardContent>
-							<p className="text-lg font-medium text-blue-800">
-								{sectionData.summary.identity_statement}
-							</p>
 						</CardContent>
 					</Card>
 				)}

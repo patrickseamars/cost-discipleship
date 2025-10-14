@@ -13,8 +13,7 @@
 				"key_thoughts": [
 					"Devote time alone with God each morning. Be intentional about what that time looks like, and how much time you set aside. Consider increasing that time to one hour alone with God, first thing, each morning.",
 					"Place matters. Find an intentional, solitary place where you can focus on quality time with God.",
-					"Be intentional about how you approach your time reading the Bible. Review the SOAP method, and consider incorporating elements of that method into your routine daily routine.",
-					"Be intentional about how you approach prayer. Review the HANDY method and begin practicing holistic prayer regularly."
+					"Be intentional about how you approach your time reading the Bible. Review the SOAP method, and consider incorporating elements of that method into your routine daily routine."
 				],
 				"identity_statement": "With the habit of Relationship, I decide to become _______________.",
 				"action_plan": "I will _______ at _______ in _______.",
@@ -22,17 +21,12 @@
 					{
 						"name": "SOAP Method",
 						"description": "Scripture, Observation, Application, Prayer - A method for daily Bible reading and application"
-					},
-					{
-						"name": "HANDY Method",
-						"description": "A holistic approach to prayer covering multiple aspects of spiritual conversation with God"
 					}
 				],
 				"habit_tracker_items": [
 					"Daily morning time with God (1 hour goal)",
 					"Solitary place for prayer/reading",
-					"Bible reading with application (SOAP method)",
-					"Holistic prayer practice (HANDY method)"
+					"Bible reading with application (SOAP method)"
 				]
 			}
 		},

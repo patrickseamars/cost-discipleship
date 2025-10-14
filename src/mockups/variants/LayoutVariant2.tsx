@@ -28,8 +28,6 @@ import {
   HelpCircle,
   AlertCircle
 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import { Toaster } from "@/components/ui/toaster";
 
 // Import the actual data
 import dailyExercisesData from "@/data/daily-exercises.json";
@@ -53,7 +51,6 @@ interface AssessmentResults {
 }
 
 const LayoutVariant2 = () => {
-  const { toast } = useToast();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [currentView, setCurrentView] = useState("dashboard");
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
