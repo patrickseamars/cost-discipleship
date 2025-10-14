@@ -4,7 +4,10 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import AuthPage from "./pages/AuthPage";
 import NotFound from "./pages/NotFound";
+import { AuthProvider } from "@/contexts/AuthContext";
+import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
 
 // Mockup imports
 import MockupHub from "./mockups/pages/MockupHub";
@@ -19,13 +22,28 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter basename={import.meta.env.PROD ? '/cost-discipleship' : ''}>
-        <Routes>
-          <Route path="/" element={<SectionsLayout />} />
-          <Route path="/legacy" element={<Index />} />
+    <AuthProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter basename={import.meta.env.PROD ? '/cost-discipleship' : ''}>
+          <Routes>
+            {/* Authentication route */}
+            <Route path="/auth" element={<AuthPage />} />
+            
+            {/* Protected main application */}
+            <Route path="/" element={
+              <ProtectedRoute>
+                <SectionsLayout />
+              </ProtectedRoute>
+            } />
+            
+            {/* Legacy page (also protected) */}
+            <Route path="/legacy" element={
+              <ProtectedRoute>
+                <Index />
+              </ProtectedRoute>
+            } />
           
           {/* Mockup Routes */}
           <Route path="/mockups" element={<MockupHub />} />
@@ -40,7 +58,8 @@ const App = () => (
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
-  </QueryClientProvider>
+  </AuthProvider>
+</QueryClientProvider>
 );
 
 export default App;

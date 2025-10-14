@@ -45,3 +45,4 @@ Thumbs.db
 # bun.lockb
 # yarn.lock
 # pnpm-lock.yaml
+.env
