@@ -8,11 +8,13 @@
     "dev": "vite",
     "build": "vite build",
     "build:dev": "vite build --mode development",
-    "build:github-pages": "vite build --outDir docs",
+    "build:netlify": "vite build",
+    "build:github-pages": "DEPLOY_TARGET=github-pages vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "predeploy": "npm run build:github-pages",
+    "deploy": "gh-pages -d dist",
+    "deploy:github-pages": "npm run build:github-pages && gh-pages -d dist"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
