@@ -171,7 +171,7 @@ const LandingPage = () => {
 							</Button>
 						</div>
 						<div className="text-sm text-gray-500">
-							Join thousands of believers growing in discipleship worldwide
+							Join other believers growing in discipleship
 						</div>
 					</div>
 				</div>
