@@ -31,6 +31,10 @@ export const assessmentStorage = {
     results: AssessmentResults,
     evaluationItems: string[]
   ): void => {
+    // Verify that we're not accidentally overwriting the wrong assessment type
+    const otherType = assessmentType === 'initial' ? 'final' : 'initial';
+    const existingOtherAssessment = assessmentStorage.getAssessment(sectionKey, otherType);
+    
     const assessment: StoredAssessment = {
       sectionKey,
       sectionTitle,
@@ -42,6 +46,19 @@ export const assessmentStorage = {
 
     const storageKey = `${STORAGE_KEY_PREFIX}${sectionKey}_${assessmentType}`;
     localStorage.setItem(storageKey, JSON.stringify(assessment));
+    
+    // Verify the other assessment is still intact after saving
+    if (existingOtherAssessment) {
+      const checkOtherAssessment = assessmentStorage.getAssessment(sectionKey, otherType);
+      if (!checkOtherAssessment || 
+          checkOtherAssessment.completedAt !== existingOtherAssessment.completedAt) {
+        console.warn('Assessment storage warning: Other assessment may have been corrupted, restoring...');
+        localStorage.setItem(
+          `${STORAGE_KEY_PREFIX}${sectionKey}_${otherType}`, 
+          JSON.stringify(existingOtherAssessment)
+        );
+      }
+    }
   },
 
   // Get a specific assessment
@@ -123,5 +140,67 @@ export const assessmentStorage = {
   clearSectionAssessments: (sectionKey: string): void => {
     localStorage.removeItem(`${STORAGE_KEY_PREFIX}${sectionKey}_initial`);
     localStorage.removeItem(`${STORAGE_KEY_PREFIX}${sectionKey}_final`);
+  },
+  
+  // Validate that both assessments have the correct assessment type
+  validateAssessments: (sectionKey: string): { valid: boolean; issues: string[] } => {
+    const issues: string[] = [];
+    const initial = assessmentStorage.getAssessment(sectionKey, 'initial');
+    const final = assessmentStorage.getAssessment(sectionKey, 'final');
+    
+    if (initial && initial.assessmentType !== 'initial') {
+      issues.push(`Initial assessment has wrong type: ${initial.assessmentType}`);
+    }
+    
+    if (final && final.assessmentType !== 'final') {
+      issues.push(`Final assessment has wrong type: ${final.assessmentType}`);
+    }
+    
+    if (initial && final && initial.completedAt === final.completedAt) {
+      issues.push('Both assessments have the same completion time - possible duplication');
+    }
+    
+    return {
+      valid: issues.length === 0,
+      issues
+    };
+  },
+  
+  // Repair corrupted assessments by ensuring correct types
+  repairAssessments: (sectionKey: string): boolean => {
+    const validation = assessmentStorage.validateAssessments(sectionKey);
+    if (validation.valid) return true;
+    
+    console.warn('Assessment validation failed:', validation.issues);
+    
+    // Try to repair by reloading from localStorage and fixing types
+    const initialKey = `${STORAGE_KEY_PREFIX}${sectionKey}_initial`;
+    const finalKey = `${STORAGE_KEY_PREFIX}${sectionKey}_final`;
+    
+    try {
+      const initialStored = localStorage.getItem(initialKey);
+      const finalStored = localStorage.getItem(finalKey);
+      
+      if (initialStored) {
+        const initialData = JSON.parse(initialStored);
+        if (initialData.assessmentType !== 'initial') {
+          initialData.assessmentType = 'initial';
+          localStorage.setItem(initialKey, JSON.stringify(initialData));
+        }
+      }
+      
+      if (finalStored) {
+        const finalData = JSON.parse(finalStored);
+        if (finalData.assessmentType !== 'final') {
+          finalData.assessmentType = 'final';
+          localStorage.setItem(finalKey, JSON.stringify(finalData));
+        }
+      }
+      
+      return true;
+    } catch (error) {
+      console.error('Failed to repair assessments:', error);
+      return false;
+    }
   }
 };

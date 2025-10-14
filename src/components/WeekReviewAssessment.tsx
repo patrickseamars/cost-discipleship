@@ -6,6 +6,7 @@ import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import { CheckCircle2, TrendingUp, TrendingDown, Minus, Calendar, BarChart3, Target, Award } from "lucide-react";
 import { InteractiveAssessment } from "./InteractiveAssessment";
+import { AssessmentComparisonChart } from "./AssessmentComparisonChart";
 import { assessmentStorage } from "@/lib/assessmentStorage";
 import { useToast } from "@/hooks/use-toast";
 
@@ -114,6 +115,23 @@ export const WeekReviewAssessment = ({
       default:
         return 'text-gray-600 bg-gray-50';
     }
+  };
+
+  const getChartData = () => {
+    return comparisonData.map((item, index) => {
+      // Create short labels for chart display (max 15 characters)
+      const shortLabel = item.text.length > 15 
+        ? `${item.text.substring(0, 15)}...` 
+        : item.text;
+      
+      return {
+        item: item.text,
+        initial: item.initialRating,
+        final: item.finalRating,
+        change: item.change,
+        shortLabel: `Area ${index + 1}`
+      };
+    });
   };
 
   const hasInitialAssessment = comparison?.initial;
@@ -285,6 +303,16 @@ export const WeekReviewAssessment = ({
 
             <Separator />
 
+            {/* Visual Chart Comparison */}
+            {comparisonData.length > 0 && (
+              <AssessmentComparisonChart
+                comparisonData={getChartData()}
+                initialAverageScore={comparison.initial.results.averageScore}
+                finalAverageScore={comparison.final.results.averageScore}
+              />
+            )}
+
+            <Separator />
             
             {/* Detailed Comparison */}
             <div className="space-y-3">

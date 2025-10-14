@@ -169,6 +169,10 @@ export const SectionNavigation = ({
                       exercise={getCurrentExercise()} 
                       sectionTitle={exerciseData.title}
                       sectionKey={sectionKey}
+                      currentDay={currentDay}
+                      totalDays={totalDays}
+                      onPrevDay={handlePrevDay}
+                      onNextDay={handleNextDay}
                     />
                   )
                 )}

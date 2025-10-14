@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Book, HelpCircle, Quote, CheckSquare, Star, Save, Check, Edit3 } from "lucide-react";
+import { Book, HelpCircle, Quote, CheckSquare, Star, Save, Check, Edit3, ChevronLeft, ChevronRight } from "lucide-react";
 import { InteractiveAssessment } from "./InteractiveAssessment";
 import { CompletedAssessment } from "./CompletedAssessment";
 import { assessmentStorage } from "@/lib/assessmentStorage";
@@ -27,9 +27,13 @@ interface DailyExerciseProps {
   };
   sectionTitle: string;
   sectionKey?: string;
+  currentDay?: number;
+  totalDays?: number;
+  onPrevDay?: () => void;
+  onNextDay?: () => void;
 }
 
-export const DailyExercise = ({ exercise, sectionTitle, sectionKey }: DailyExerciseProps) => {
+export const DailyExercise = ({ exercise, sectionTitle, sectionKey, currentDay, totalDays, onPrevDay, onNextDay }: DailyExerciseProps) => {
   const { toast } = useToast();
   
   // State for reflection answers and question answers
@@ -212,7 +216,18 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey }: DailyExerc
   // Handle assessment type with dedicated component
   if (exercise.type === 'assessment' && exercise.evaluation_items && exercise.reflection_prompts) {
     // Check if initial assessment has already been completed
-    const existingAssessment = sectionKey ? assessmentStorage.getAssessment(sectionKey, 'initial') : null;
+    // Force fresh data by checking localStorage directly to avoid caching issues
+    const existingAssessment = sectionKey ? (() => {
+      // Clear any potential cache by getting fresh data
+      const key = `cost_assessment_${sectionKey}_initial`;
+      const stored = localStorage.getItem(key);
+      if (!stored) return null;
+      try {
+        return JSON.parse(stored);
+      } catch {
+        return null;
+      }
+    })() : null;
     
     if (existingAssessment) {
       // Show completed assessment with option to retake
@@ -606,6 +621,59 @@ export const DailyExercise = ({ exercise, sectionTitle, sectionKey }: DailyExerc
                   <span>
                     Reflections: {Object.keys(reflectionAnswers).filter(key => reflectionAnswers[parseInt(key)]?.trim().length > 0).length}/{exercise.reflection_prompts.length}
                   </span>
+                )}
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+      
+      {/* Day Navigation */}
+      {(onPrevDay || onNextDay) && (
+        <Card className="bg-primary/5 border-primary/20">
+          <CardContent className="pt-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                {currentDay && totalDays && (
+                  <>
+                    <span className="text-sm font-medium text-primary">Day {currentDay} of {totalDays}</span>
+                    {currentDay < totalDays && (
+                      <Badge variant="outline" className="text-xs">
+                        Next: Day {currentDay + 1}
+                      </Badge>
+                    )}
+                  </>
+                )}
+              </div>
+              
+              <div className="flex items-center gap-2">
+                {onPrevDay && currentDay && currentDay > 1 && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={onPrevDay}
+                    className="flex items-center gap-2 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                    Previous Day
+                  </Button>
+                )}
+                
+                {onNextDay && currentDay && totalDays && currentDay < totalDays && (
+                  <Button
+                    onClick={onNextDay}
+                    size="sm"
+                    className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground"
+                  >
+                    Next Day
+                    <ChevronRight className="w-4 h-4" />
+                  </Button>
+                )}
+                
+                {currentDay === totalDays && (
+                  <div className="text-sm text-muted-foreground font-medium">
+                    🎉 Week Complete!
+                  </div>
                 )}
               </div>
             </div>

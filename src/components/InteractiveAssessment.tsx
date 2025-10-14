@@ -176,40 +176,59 @@ export const InteractiveAssessment = ({
           
           <div className="space-y-4">
             {evaluationItems.map((item, index) => (
-              <div key={index} className="bg-muted/50 p-4 rounded-lg space-y-3">
-                <p className="text-sm font-medium">{item}</p>
+              <div key={index} className="bg-muted/30 border border-muted/50 p-5 rounded-lg space-y-4 hover:shadow-sm transition-shadow">
+                <p className="text-sm font-medium leading-relaxed">{item}</p>
                 
-                {/* Rating Buttons */}
-                <div className="flex gap-1 flex-wrap">
-                  {Array.from({ length: 10 }, (_, i) => {
-                    const rating = i + 1;
-                    const isSelected = ratings[index] === rating;
-                    return (
-                      <Button
-                        key={rating}
-                        variant={isSelected ? "default" : "outline"}
-                        size="sm"
-                        className={`w-8 h-8 p-0 ${isSelected ? '' : 'hover:bg-primary/10'}`}
-                        onClick={() => handleRatingChange(index, rating)}
-                      >
-                        {rating}
-                      </Button>
-                    );
-                  })}
+                {/* Rating Scale Reference */}
+                <div className="flex justify-between items-center text-xs text-muted-foreground border-t pt-3">
+                  <span>1 = Never true of me</span>
+                  <span>10 = Always true of me</span>
                 </div>
                 
-                {/* Selected Rating Display */}
-                {ratings[index] && (
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs text-muted-foreground">Your rating:</span>
-                    <Badge 
-                      variant={getScoreBadgeVariant(ratings[index])}
-                      className="text-xs"
-                    >
-                      {ratings[index]}/10
-                    </Badge>
+                {/* Rating Buttons */}
+                <div className="space-y-2">
+                  <div className="flex gap-2 flex-wrap items-center">
+                    <span className="text-xs text-muted-foreground font-medium min-w-[60px]">Rating:</span>
+                    <div className="flex gap-1">
+                      {Array.from({ length: 10 }, (_, i) => {
+                        const rating = i + 1;
+                        const isSelected = ratings[index] === rating;
+                        return (
+                          <Button
+                            key={rating}
+                            variant={isSelected ? "default" : "outline"}
+                            size="sm"
+                            className={`w-9 h-9 p-0 text-xs font-semibold ${isSelected ? 'bg-primary text-primary-foreground shadow-sm' : 'hover:bg-primary/10 hover:text-primary'} transition-all`}
+                            onClick={() => handleRatingChange(index, rating)}
+                          >
+                            {rating}
+                          </Button>
+                        );
+                      })}
+                    </div>
                   </div>
-                )}
+                  
+                  {/* Selected Rating Display */}
+                  {ratings[index] && (
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs text-muted-foreground">Your rating:</span>
+                        <Badge 
+                          variant={getScoreBadgeVariant(ratings[index])}
+                          className="text-xs font-semibold"
+                        >
+                          {ratings[index]}/10
+                        </Badge>
+                      </div>
+                      <span className="text-xs text-muted-foreground">
+                        {ratings[index] <= 3 ? 'Needs significant growth' : 
+                         ratings[index] <= 5 ? 'Room for improvement' : 
+                         ratings[index] <= 7 ? 'Making progress' : 
+                         ratings[index] <= 9 ? 'Strong area' : 'Excellent!'}
+                      </span>
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
