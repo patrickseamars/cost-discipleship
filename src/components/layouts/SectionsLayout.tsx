@@ -30,6 +30,7 @@ import {
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Toaster } from "@/components/ui/toaster";
+import { useAuth } from "@/contexts/AuthContext";
 
 // Import the actual data
 import dailyExercisesData from "@/data/daily-exercises.json";
@@ -54,6 +55,7 @@ interface AssessmentResults {
 
 const SectionsLayout = () => {
   const { toast } = useToast();
+  const { signOut } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [currentView, setCurrentView] = useState("dashboard");
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
@@ -2094,6 +2096,13 @@ const SectionsLayout = () => {
                 <p className="text-xs text-gray-500">Cultivating Obedience through Scripture & Training</p>
               </div>
             </div>
+            <Button 
+              onClick={() => signOut()}
+              variant="outline"
+              size="sm"
+            >
+              Logout
+            </Button>
           </div>
         </div>
       </div>
