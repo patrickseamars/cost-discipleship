@@ -351,6 +351,13 @@ const SectionsLayout = () => {
 				results.percentageScore
 			)}%.`,
 		});
+
+		// If this was a final assessment, redirect to Week Review to show comparison
+		if (assessmentType === "final") {
+			setTimeout(() => {
+				setCurrentView(`${sectionKey}-week-review`);
+			}, 2000); // Wait 2 seconds for user to see the success message
+		}
 	};
 
 	const Sidebar = () => (
@@ -1659,8 +1666,9 @@ const SectionsLayout = () => {
 															</p>
 															<Button
 																onClick={() => {
-																	const assessmentType =
-																		dayNum === 1 ? "initial" : "final";
+																	// Determine assessment type based on whether this is a final assessment
+																	const assessmentType = 
+																		(isFinalAssessment || dayNumber === "final") ? "final" : "initial";
 																	submitAssessment(
 																		dayId,
 																		sectionKey,
