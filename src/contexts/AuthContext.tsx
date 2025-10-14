@@ -34,12 +34,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (event, session) => {
+      console.log('Auth state change:', event, !!session?.user);
+      
       setUser(session?.user ?? null);
       
-      if (session?.user) {
+      if (session?.user && !profile) {
+        console.log('Loading profile for user...');
         await loadProfile(session.user.id);
-      } else {
+      } else if (!session?.user) {
+        console.log('No user, clearing profile...');
         setProfile(null);
+        setLoading(false);
+      } else {
+        console.log('User exists and profile already loaded, skipping...');
         setLoading(false);
       }
     });
@@ -47,27 +54,69 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => subscription.unsubscribe();
   }, []);
 
-  const loadProfile = async (userId: string) => {
+  const loadProfile = async (userId: string, retryCount = 0) => {
     try {
-      const { data, error } = await supabase
+      console.log('🔍 Starting profile load for user:', userId, retryCount > 0 ? `(retry ${retryCount})` : '');
+      
+      // Add timeout to prevent hanging queries
+      console.log('📡 Making Supabase query...');
+      
+      const queryPromise = supabase
         .from('profiles')
-        .select('*')
+        .select('id, email, first_name, last_name, role, group_id, created_at, updated_at')
         .eq('id', userId)
         .single();
+      
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Query timeout after 10 seconds')), 10000)
+      );
+      
+      const { data, error } = await Promise.race([queryPromise, timeoutPromise]) as any;
+      
+      console.log('📊 Query completed. Data:', data, 'Error:', error);
 
+      console.log('🔄 Processing query result...');
+      
       if (error && error.code === 'PGRST116') {
         // Profile doesn't exist - this can happen if profile creation failed during signup
+        console.warn('⚠️ Profile not found for user:', userId);
         setProfile(null);
       } else if (error) {
-        console.error('Error loading profile:', error);
-        setProfile(null);
+        console.error('❌ Error loading profile:', error);
+        // For admin users or users who should have profiles, create a minimal profile to prevent ProfileSetup
+        // This prevents the ProfileSetup component from appearing inappropriately
+        console.log('🔧 Creating minimal profile to prevent ProfileSetup loop');
+        const minimalProfile = {
+          id: userId,
+          email: '', // Will be populated from user.email in component
+          first_name: 'Profile',
+          last_name: 'Loading Error',
+          role: 'member',
+          group_id: null,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        };
+        setProfile(minimalProfile);
       } else {
+        console.log('✅ Profile loaded successfully:', data);
         setProfile(data);
       }
     } catch (error) {
-      console.error('Error loading profile:', error);
-      setProfile(null);
+      console.error('💥 Exception while loading profile:', error);
+      // Set a minimal profile to prevent ProfileSetup from appearing
+      const errorProfile = {
+        id: userId,
+        email: '', 
+        first_name: 'Profile',
+        last_name: 'Error',
+        role: 'member',
+        group_id: null,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
+      };
+      setProfile(errorProfile);
     } finally {
+      console.log('🏁 Profile loading finished, setting loading to false');
       setLoading(false);
     }
   };
@@ -181,6 +230,19 @@ export function useAuth() {
 // Role-based hooks for convenience
 export function useRequireAuth(requiredRole?: 'admin' | 'group_leader') {
   const { user, profile, loading } = useAuth();
+  
+  // Debug logging when checking admin access
+  if (requiredRole === 'admin') {
+    console.log('useRequireAuth admin check:', {
+      requiredRole,
+      user: !!user,
+      profile: !!profile,
+      loading,
+      userRole: profile?.role,
+      userEmail: user?.email,
+      profileData: profile
+    });
+  }
   
   const hasAccess = !requiredRole || profile?.role === requiredRole || profile?.role === 'admin';
   
