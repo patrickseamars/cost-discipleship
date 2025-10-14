@@ -40,13 +40,11 @@ export function ProfileSetup() {
     try {
       const { error: profileError } = await supabase
         .from('profiles')
-        .insert({
-          id: user.id,
-          email: user.email || '',
+        .update({
           first_name: data.firstName,
           last_name: data.lastName,
-          role: 'member',
-        });
+        })
+        .eq('id', user.id);
 
       if (profileError) throw profileError;
 

@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import AuthPage from "./pages/AuthPage";
+import AdminDashboard from "./pages/AdminDashboard";
+import GroupLeaderDashboard from "./pages/GroupLeaderDashboard";
 import NotFound from "./pages/NotFound";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
@@ -35,6 +37,20 @@ const App = () => (
             <Route path="/" element={
               <ProtectedRoute>
                 <SectionsLayout />
+              </ProtectedRoute>
+            } />
+            
+            {/* Admin Dashboard (admin only) */}
+            <Route path="/admin" element={
+              <ProtectedRoute requiredRole="admin">
+                <AdminDashboard />
+              </ProtectedRoute>
+            } />
+            
+            {/* Group Leader Dashboard (group leader only) */}
+            <Route path="/group-leader" element={
+              <ProtectedRoute requiredRole="group_leader">
+                <GroupLeaderDashboard />
               </ProtectedRoute>
             } />
             

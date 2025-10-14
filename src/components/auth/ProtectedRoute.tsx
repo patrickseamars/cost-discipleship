@@ -28,9 +28,17 @@ export function ProtectedRoute({ children, requiredRole }: ProtectedRouteProps) 
     return <Navigate to="/auth" replace />;
   }
 
-  // Show profile setup if user exists but no profile
-  if (user && !profile && !loading) {
-    return <ProfileSetup />;
+  // Show profile setup only for truly incomplete profiles, not loading errors
+  if (user && !loading && profile) {
+    // Only show ProfileSetup for auto-created profiles or truly missing names
+    const isAutoCreatedProfile = profile.first_name === 'Unknown' && profile.last_name === 'User';
+    const hasEmptyNames = !profile.first_name?.trim() || !profile.last_name?.trim();
+    const isLoadingError = profile.first_name === 'Profile' && (profile.last_name === 'Loading Error' || profile.last_name === 'Error');
+    
+    // Don't show ProfileSetup for loading errors
+    if ((isAutoCreatedProfile || hasEmptyNames) && !isLoadingError) {
+      return <ProfileSetup />;
+    }
   }
 
   // Check role-based access if required
