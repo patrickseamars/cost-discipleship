@@ -4,10 +4,10 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Users, BookOpen, CheckSquare, ArrowLeft, ArrowRight, Calendar, Check } from "lucide-react";
 import { useState, useEffect } from "react";
-import { SectionOverview } from "./SectionOverview";
-import { DailyExercise } from "./DailyExercise";
-import { SectionSummary } from "./SectionSummary";
-import { WeekReviewAssessment } from "./WeekReviewAssessment";
+import { SectionOverview } from "../sections/SectionOverview";
+import { DailyExercise } from "../daily/DailyExercise";
+import { SectionSummary } from "../sections/SectionSummary";
+import { WeekReviewAssessment } from "../assessment/WeekReviewAssessment";
 import { completionStorage } from "@/lib/completionStorage";
 
 interface SectionNavigationProps {

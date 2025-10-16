@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { BottomNavigation } from "@/components/BottomNavigation";
-import { DevotionalTab } from "@/components/DevotionalTab";
-import { HabitsTab } from "@/components/HabitsTab";
+import { BottomNavigation } from "@/components/navigation/BottomNavigation";
+import { DevotionalTab } from "@/components/daily/DevotionalTab";
+import { HabitsTab } from "@/components/habits/HabitsTab";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
