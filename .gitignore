@@ -45,4 +45,23 @@ Thumbs.db
 # bun.lockb
 # yarn.lock
 # pnpm-lock.yaml
+
+# Environment variables
 .env
+.env.local
+.env.production
+.env.staging
+
+# SQL scripts and database files (for security)
+sql/
+*.sql
+
+# Private/sensitive content
+private/
+*.pdf
+
+# Development and debug files
+*debug*
+*temp*
+*.debug.*
+test-*
